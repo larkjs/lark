@@ -15,10 +15,16 @@
     "industrial",
     "co"
   ],
-  "author": "mdemo",
+  "engines": {
+    "node": ">= 0.11.13"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/larkjs/lark/issues"
   },
-  "homepage": "https://github.com/larkjs/lark"
+  "homepage": "https://github.com/larkjs/lark",
+  "files": [
+    "lib"
+  ]
 }
+
