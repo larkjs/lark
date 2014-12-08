@@ -1,6 +1,6 @@
 {
   "name": "lark",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,12 @@
   },
   "homepage": "https://github.com/larkjs/lark",
   "files": [
-    "lib"
-  ]
+    "lib",
+    "index.js"
+  ],
+  "dependencies": {
+    "koa": "^0.13.0",
+    "lark-config": "0.0.2",
+    "lark-koa-bootstrap": "^0.1.1"
+  }
 }
-

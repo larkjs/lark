@@ -1,0 +1,7 @@
+{
+  "port": 80,
+  "bootstrap": {
+    "enable": true,
+    "directory": "controllers"
+  }
+}
