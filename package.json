@@ -1,0 +1,24 @@
+{
+  "name": "lark",
+  "version": "0.0.1",
+  "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/larkjs/lark.git"
+  },
+  "keywords": [
+    "koa",
+    "industrial",
+    "co"
+  ],
+  "author": "mdemo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/larkjs/lark/issues"
+  },
+  "homepage": "https://github.com/larkjs/lark"
+}
