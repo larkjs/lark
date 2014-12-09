@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "koa": "^0.13.0",
-    "lark-config": "0.0.2",
-    "lark-koa-bootstrap": "^0.1.1"
+    "lark-config": "0.0.4",
+    "lark-koa-bootstrap": "^0.1.2"
   }
 }
