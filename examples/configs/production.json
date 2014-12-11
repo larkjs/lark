@@ -1,6 +1,6 @@
 {
   "port": 80,
-  "bootstrap": {
+  "router": {
     "enable": true,
     "directory": "controllers"
   }
