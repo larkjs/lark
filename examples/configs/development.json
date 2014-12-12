@@ -3,5 +3,12 @@
   "router": {
     "enable": true,
     "directory": "examples/controllers"
+  },
+  "mvc": {
+    "enable": true,
+    "director": "examples/models"
+  },
+  "bootstrap":{
+    "enable": true
   }
 }
