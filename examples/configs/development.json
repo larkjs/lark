@@ -1,6 +1,6 @@
 {
   "port": 3000,
-  "bootstrap": {
+  "router": {
     "enable": true,
     "directory": "examples/controllers"
   }

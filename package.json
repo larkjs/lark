@@ -30,6 +30,6 @@
   "dependencies": {
     "koa": "^0.13.0",
     "lark-config": "0.0.4",
-    "lark-bootstrap": "^0.1.2"
+    "lark-router": "^0.1.0"
   }
 }
