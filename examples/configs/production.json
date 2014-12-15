@@ -1,7 +1,14 @@
 {
-  "port": 80,
+  "port": 3000,
   "router": {
     "enable": true,
-    "directory": "controllers"
+    "directory": "examples/controllers"
+  },
+  "mvc": {
+    "enable": true,
+    "director": "examples/models"
+  },
+  "bootstrap":{
+    "enable": true
   }
 }
