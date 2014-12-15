@@ -9,6 +9,6 @@
     "director": "examples/models"
   },
   "bootstrap":{
-    "enable": true
+    "enable": false
   }
 }
