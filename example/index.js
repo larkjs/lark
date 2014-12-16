@@ -3,7 +3,7 @@
  */
 var lark = require('..');
 var app = lark({
-  directory: "examples/configs"
+  directory: "example/configs"
 });
 
 app.run();
