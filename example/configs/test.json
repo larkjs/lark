@@ -1,0 +1,14 @@
+{
+  "port": 3000,
+  "router": {
+    "enable": true,
+    "directory": "example/controllers"
+  },
+  "mvc": {
+    "enable": true,
+    "director": "example/models"
+  },
+  "bootstrap":{
+    "enable": true
+  }
+}
