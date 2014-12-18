@@ -3,9 +3,9 @@
  */
 var lark = require('..');
 var app = lark({
-  directory: "example/configs"
+  directory: "example/config"
 });
 
-app.run();
-
-
+app.listen(app.config.port, function () {
+  console.log('running on', app.config.port);
+});

@@ -14,10 +14,10 @@ var request = require('supertest');
 var lark = require('../lib/application');
 
 describe('lib/application.js', function () {
-  describe('app instance', function(){
-    it('app instanceof lark should equal true', function(done){
+  describe('app instance', function () {
+    it('app instanceof lark should equal true', function (done) {
       var app = lark({
-        directory: "example/configs"
+        directory: "example/config"
       });
       (app instanceof lark).should.equal(true);
       done();
