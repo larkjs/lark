@@ -30,7 +30,7 @@
     "koa": "^0.13.0",
     "lark-bootstrap": "0.0.2",
     "lark-config": "0.0.4",
-    "lark-mvc": "0.1.0",
+    "lark-mvc": "~0.2.1",
     "lark-router": "^0.1.0",
     "merge": "^1.2.0"
   },
