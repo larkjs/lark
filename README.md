@@ -24,7 +24,7 @@ alias node='node --harmony'
  
 ## Quick Start
 
-The quickest way to get started with lark is to utilize the executable express to generate an application as shown below:
+The quickest way to get started with lark is to utilize the executable lark to generate an application as shown below:
 
 ```
 $ npm install -g lark
