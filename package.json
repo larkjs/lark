@@ -31,8 +31,7 @@
     "lark-bootstrap": "0.0.2",
     "lark-config": "0.2.1",
     "lark-mvc": "0.2.1",
-    "lark-router": "0.2.1",
-    "merge": "^1.2.0"
+    "lark-router": "0.2.1"
   },
   "devDependencies": {
     "mocha": "^2.0.1",
