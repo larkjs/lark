@@ -1,9 +1,9 @@
-var dao = require('lark-mvc').dao
-var demo = dao.create('demo')
+var dao = require('lark-mvc').dao;
+var demo = dao.create('demo');
 demo.getData = function () {
-  return 'dao dataServices is loaded!' + '\n'
-}
-module.exports = demo
+  return 'dao'
+};
+module.exports = demo;
 
 
 //module.exports = function(demo){
