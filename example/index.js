@@ -2,7 +2,7 @@
  * Created by mdemo on 14/12/8.
  */
 var lark = require('..');
-var app = lark({
+var app = module.exports = lark({
   directory: "example/config"
 });
 
