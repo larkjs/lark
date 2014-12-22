@@ -18,6 +18,7 @@ var development = {
   environment: 'development',
   port: 3000,
   bootstrap: {enable: false},
+  mvc: {path: 'example/models'},
   router: {directory: 'example/controllers'},
   views: {engine: 'handlebars', layout: 'layouts'}
 };
