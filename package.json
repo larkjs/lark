@@ -4,7 +4,7 @@
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
   "main": "lib/application.js",
   "scripts": {
-    "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony-generators --require should test/application.test.js"
+    "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony-generators --require should test/"
   },
   "repository": {
     "type": "git",
@@ -27,11 +27,14 @@
     "lib"
   ],
   "dependencies": {
+    "app-root-path": "^1.0.0",
+    "commander": "^2.5.1",
     "koa": "^0.14.0",
     "lark-bootstrap": "0.0.2",
-    "lark-config": "0.2.1",
+    "lark-config": "0.3.0",
     "lark-mvc": "0.2.1",
-    "lark-router": "0.2.1"
+    "lark-router": "0.2.1",
+    "shelljs": "^0.3.0"
   },
   "devDependencies": {
     "mocha": "^2.0.1",
