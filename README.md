@@ -31,6 +31,13 @@ $ npm install -g lark
 $ lark new lark-example
 ```
 
+## benchmark
+
+```
+$ npm run benchmark
+```
+
+
 ## Examples
 
 [lark-seed](https://github.com/larkjs/lark-seed)

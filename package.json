@@ -5,7 +5,7 @@
   "main": "lib/application.js",
   "scripts": {
     "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony-generators --require should test/",
-    "bench": "sh benchmarks/run.sh example/index"
+    "benchmark": "sh benchmarks/run.sh example/index"
   },
   "repository": {
     "type": "git",
