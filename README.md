@@ -1,14 +1,13 @@
 Lark
 ====
 
-A node.js framework based on Koa. 
+Lark is a node.js framework based on [Koa](https://github.com/koajs/koa)
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![NPM downloads][downloads-image]][npm-url]
 [![Node.js dependencies][david-image]][david-url]
 
-Lark is a node.js framework based on [Koa](https://github.com/koajs/koa)
 
 ## Installation
 
