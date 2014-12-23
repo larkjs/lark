@@ -1,13 +1,13 @@
 Lark
 ====
 
-A node.js framework based on Koa. 
+Lark is a node.js framework based on [Koa](https://github.com/koajs/koa)
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
+[![NPM downloads][downloads-image]][npm-url]
+[![Node.js dependencies][david-image]][david-url]
 
-
-Lark is a node.js framework based on [Koa](https://github.com/koajs/koa)
 
 ## Installation
 
@@ -31,6 +31,13 @@ $ npm install -g lark
 $ lark new lark-example
 ```
 
+## benchmark
+
+```
+$ npm run benchmark
+```
+
+
 ## Examples
 
 [lark-seed](https://github.com/larkjs/lark-seed)
@@ -42,3 +49,6 @@ $ lark new lark-example
 [npm-url]: https://npmjs.org/package/lark
 [travis-image]: https://img.shields.io/travis/larkjs/lark/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/larkjs/lark
+[downloads-image]: https://img.shields.io/npm/dm/lark.svg?style=flat-square
+[david-image]: https://img.shields.io/david/larkjs/lark.svg?style=flat-square
+[david-url]: https://david-dm.org/larkjs/lark
