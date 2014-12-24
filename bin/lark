@@ -3,30 +3,53 @@
 var program = require('commander');
 var fs = require('fs');
 var path = require('path');
-var rootPath = require('app-root-path').toString();
 var shell = require('shelljs');
 
 var pkg = require('../package.json');
 var version = pkg.version;
 var cp = shell.cp;
 var cd = shell.cd;
+var exec = shell.exec;
+var error = shell.error;
 
 program
-  .version(version)
-  .option('new <app>', 'create new app', create)
-  .option('create <app>', 'create new app', create)
-  .parse(process.argv);
+    .version(version)
+    .option('new <app>', 'create new app', createApp)
+    .option('create <app>', 'create new app', createApp)
+    .option('run', 'run the lark app', runApp);
+
+program.on('--help', function () {
+    console.log('  Examples:');
+    console.log('');
+    console.log('    $ lark new lark-app');
+    console.log('    $ lark run');
+    console.log('');
+});
+
+program.parse(process.argv);
 
 
-function create(app) {
-  var cwd = process.cwd();
-  var appPath = path.join(cwd, app);
-  var testPath = path.join(rootPath, 'node_modules', 'lark-router/*');
-  if(fs.existsSync(appPath)){
-    console.error(appPath + ' is not empty');
-  }else{
-    cp('-rf', testPath, appPath);
-    cd(appPath);
-  }
+function createApp(app) {
+    var cwd = process.cwd();
+    var appPath = path.join(cwd, app);
+    var seedPath = path.join(path.dirname(require.resolve('lark-seed')), 'seed/*');
+    if (fs.existsSync(appPath)) {
+        console.error('%s is not a empty directory', appPath);
+    } else {
+        cp('-rf', seedPath, appPath);
+        cd(appPath);
+        exec('npm install', {silent:true});
+        var err = error();
+        if(!err){
+            console.log('');
+            console.log('%s created success!', app);
+            console.log('you can run lark app by: ');
+            console.log('    $ cd %s', app);
+            console.log('    $ lark run')
+        }
+    }
 }
 
+function runApp() {
+    exec('node --harmony index.js', {async: false});
+}
