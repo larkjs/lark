@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+/**
+ * Module dependencies.
+ */
 var program = require('commander');
 var fs = require('fs');
 var path = require('path');
@@ -11,18 +14,33 @@ var cp = shell.cp;
 var cd = shell.cd;
 var exec = shell.exec;
 var error = shell.error;
+var mkdir = shell.mkdir;
+var seedPath = path.dirname(require.resolve('lark-seed'));
 
+/**
+ * create simple command
+ */
 program
     .version(version)
     .option('new <app>', 'create new app', createApp)
     .option('create <app>', 'create new app', createApp)
-    .option('run', 'run the lark app', runApp);
+    .option('run', 'run the lark app', runApp)
+    .option('server', 'run the lark app', runApp);
+
+/**
+ * command generate
+ */
+program.command('generate')
+       .description('generate helper')
+       .usage('[something]')
+       .action(generateHelper);
 
 program.on('--help', function () {
     console.log('  Examples:');
     console.log('');
     console.log('    $ lark new lark-app');
     console.log('    $ lark run');
+    console.log('    $ lark controller user/create.js');
     console.log('');
 });
 
@@ -32,15 +50,15 @@ program.parse(process.argv);
 function createApp(app) {
     var cwd = process.cwd();
     var appPath = path.join(cwd, app);
-    var seedPath = path.join(path.dirname(require.resolve('lark-seed')), 'seed/*');
+    var seed = path.join(seedPath, 'seed/*');
     if (fs.existsSync(appPath)) {
         console.error('%s is not a empty directory', appPath);
     } else {
-        cp('-rf', seedPath, appPath);
+        cp('-rf', seed, appPath);
         cd(appPath);
-        exec('npm install', {silent:true});
+        exec('npm install', {silent: true});
         var err = error();
-        if(!err){
+        if (!err) {
             console.log('');
             console.log('%s created success!', app);
             console.log('you can run lark app by: ');
@@ -52,4 +70,49 @@ function createApp(app) {
 
 function runApp() {
     exec('node --harmony index.js', {async: false});
+}
+
+/**
+ * generateController
+ * @param directory {{string}}
+ * useage
+ * user/create.js
+ * api
+ * api/
+ */
+function generateController(directory) {
+    if (!directory) {
+        return;
+    }
+    if (!fs.existsSync('controllers')) {
+        console.error('You need a controllers directory');
+        return;
+    }
+    var cwd = process.cwd();
+    var seed = path.join(seedPath, 'controller/index.js');
+    var dirname = '';
+    var filePath = '';
+    var extname = path.extname(directory);
+    if (extname && extname === '.js') {
+        filePath = path.join(cwd, 'controllers', directory);
+        dirname = path.join(cwd, 'controllers', path.dirname(directory));
+    } else if (!extname) {
+        filePath = path.join(cwd, 'controllers', directory, 'index.js');
+        dirname = path.join(cwd, 'controllers', directory);
+    }
+
+    if (!fs.existsSync(dirname)) {
+        mkdir('-p', dirname);
+    }
+
+    cp(seed, filePath);
+}
+
+function generateHelper(){
+    var generateType = arguments['0'];
+
+    switch (generateType){
+        case 'controller':
+            generateController(arguments['1']);
+    }
 }
