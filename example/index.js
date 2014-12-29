@@ -6,6 +6,10 @@ var app = module.exports = lark({
   directory: "example/config"
 });
 
-app.listen(app.config.port, function () {
-  console.log('running on', app.config.port);
+//app.listen(app.config.port, function () {
+//  console.log('running on', app.config.port);
+//});
+
+app.run(function(port){
+  console.log('running on', port);
 });
