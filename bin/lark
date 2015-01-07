@@ -18,35 +18,65 @@ var mkdir = shell.mkdir;
 var seedPath = path.dirname(require.resolve('lark-seed'));
 
 /**
- * create simple command
+ * set lark version
  */
+program.version(version);
+
+/**
+ * option env
+ */
+program.option('-e, --env <env>');
+
+/**
+ * comman new
+ */
+
 program
-    .version(version)
-    .option('new <app>', 'create new app', createApp)
-    .option('create <app>', 'create new app', createApp)
-    .option('run', 'run the lark app', runApp)
-    .option('server', 'run the lark app', runApp);
+    .command('new')
+    .alias('n')
+    .description('create an application base on lark framework')
+    .usage('<app>')
+    .action(createApp);
+/**
+ * comman run/server
+ */
+
+program
+    .command('run')
+    .alias('server')
+    .description('run lark app with watch')
+    .usage('<app>')
+    .action(runApp);
 
 /**
  * command generate
  */
-program.command('generate')
-       .description('generate helper')
-       .usage('[something]')
-       .action(generateHelper);
+program
+    .command('generate')
+    .alias('g')
+    .description('code generator')
+    .usage('[something]')
+    .action(generateHelper);
 
+/**
+ * custom help
+ */
 program.on('--help', function () {
     console.log('  Examples:');
     console.log('');
     console.log('    $ lark new lark-app');
     console.log('    $ lark run');
-    console.log('    $ lark controller user/create.js');
+    console.log('    $ lark generate controller user/create.js');
     console.log('');
 });
 
 program.parse(process.argv);
 
 
+/**
+ * create app
+ * @param app
+ */
 function createApp(app) {
     var cwd = process.cwd();
     var appPath = path.join(cwd, app);
@@ -56,9 +86,10 @@ function createApp(app) {
     } else {
         cp('-rf', seed, appPath);
         cd(appPath);
-        exec('npm install', {silent: true});
+        exec('npm install');
         var err = error();
         if (!err) {
+            console.log('');
             console.log('');
             console.log('%s created success!', app);
             console.log('you can run lark app by: ');
@@ -68,8 +99,16 @@ function createApp(app) {
     }
 }
 
+/**
+ * run the app
+ */
 function runApp() {
-    exec('node --harmony index.js', {async: false});
+    var cmd = '';
+    if(program.env){
+        cmd += 'NODE_ENV=' + program.env;
+    }
+    cmd += ' node --harmony index.js';
+    exec(cmd, {async: false});
 }
 
 /**
@@ -106,13 +145,68 @@ function generateController(directory) {
     }
 
     cp(seed, filePath);
+
+    console.log(filePath,' created')
+}
+/**
+ * generate PageService file
+ * @param page  pageService file name
+ */
+function generatePageService(page){
+    if (!page) {
+        return;
+    }
+    if (!fs.existsSync('models')) {
+        console.error('You need a models directory');
+        return;
+    }
+    var cwd = process.cwd();
+    var seed = path.join(seedPath, 'pageservice/index.js');
+    var filePath = path.join(cwd, 'models', page + '.js');
+    cp(seed, filePath)
+    console.log(filePath,' created')
+}
+/**
+ * generate DataService file
+ * @param data dataService file name
+ */
+function generateDataService(data){
+    if (!data) {
+        return;
+    }
+    if (!fs.existsSync('models')) {
+        console.error('You need a models directory');
+        return;
+    }
+    var cwd = process.cwd();
+    var seed = path.join(seedPath, 'dataservice/index.js');
+    var filePath = path.join(cwd, 'models', data + '.js');
+    cp(seed, filePath);
+    console.log(filePath,' created')
 }
 
+/**
+ *
+ */
 function generateHelper(){
+    if(arguments.length !=3){
+        return;
+    }
     var generateType = arguments['0'];
-
+    var arg = arguments['1'];
     switch (generateType){
         case 'controller':
-            generateController(arguments['1']);
+            generateController(arg);
+            break;
+        case 'page':
+            generatePageService(arg);
+            break;
+        case 'data':
+            generateDataService(arg);
+            break;
     }
 }
+
+
+//TODO: command test,benchmark，destory
+//TODO: option -w,-f
