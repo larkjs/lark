@@ -44,7 +44,6 @@ $ npm run benchmark
 
 
 
-
 [npm-image]: https://img.shields.io/npm/v/lark.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/lark
 [travis-image]: https://img.shields.io/travis/larkjs/lark/master.svg?style=flat-square
