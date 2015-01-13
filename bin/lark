@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --harmony
 
 /**
  * Module dependencies.
@@ -7,6 +7,7 @@ var program = require('commander');
 var fs = require('fs');
 var path = require('path');
 var shell = require('shelljs');
+var bootstrap = require('lark-bootstrap');
 
 var pkg = require('../package.json');
 var version = pkg.version;
@@ -44,9 +45,49 @@ program
 program
     .command('run')
     .alias('server')
+    .alias('start')
     .description('run lark app with watch')
     .usage('<app>')
     .action(runApp);
+
+/**
+ * command restart
+ */
+
+program
+    .command('restart')
+    .description('restart app')
+    .usage('<app>')
+    .action(function(){
+        var cmd = ' node --harmony index.js --lark-restart';
+        exec(cmd, {async: false});
+    });
+
+/**
+ * command reload
+ */
+
+program
+    .command('reload')
+    .description('reload app')
+    .usage('<app>')
+    .action(function(){
+        var cmd = ' node --harmony index.js --lark-reload';
+        exec(cmd, {async: false});
+    });
+
+/**
+ * command stop
+ */
+
+program
+    .command('stop')
+    .description('stop app')
+    .usage('<app>')
+    .action(function(){
+        var cmd = ' node --harmony index.js --lark-stop';
+        exec(cmd, {async: false});
+    });
 
 /**
  * command generate
@@ -57,6 +98,7 @@ program
     .description('code generator')
     .usage('[something]')
     .action(generateHelper);
+
 
 /**
  * custom help
