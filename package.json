@@ -33,13 +33,15 @@
   ],
   "dependencies": {
     "commander": "^2.5.1",
+    "got": "^2.3.0",
     "koa": "^0.14.0",
     "lark-bootstrap": "0.0.5",
     "lark-config": "0.3.0",
     "lark-mvc": "0.3.0",
     "lark-router": "0.2.1",
     "lark-seed": "0.1.4",
-    "shelljs": "^0.3.0"
+    "shelljs": "^0.3.0",
+    "thenify-all": "^1.6.0"
   },
   "devDependencies": {
     "mocha": "^2.0.1",

@@ -63,3 +63,5 @@ describe('lark-config', function () {
     done();
   })
 });
+
+
