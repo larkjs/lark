@@ -198,15 +198,18 @@ function generatePageService(page){
     if (!page) {
         return;
     }
-    if (!fs.existsSync('models')) {
-        console.error('You need a models directory');
-        return;
+    if(path.extname(page) !== '.js'){
+        page += '.js';
     }
     var cwd = process.cwd();
     var seed = path.join(seedPath, 'pageservice/index.js');
-    var filePath = path.join(cwd, 'models', page + '.js');
-    cp(seed, filePath)
-    console.log(filePath,' created')
+    var pageservice = path.join(cwd, 'models','pageServices');
+    if (!fs.existsSync(pageservice)) {
+        mkdir('-p', pageservice);
+    }
+    var filePath = path.join(pageservice, page);
+    cp(seed, filePath);
+    console.log(filePath,' created');
 }
 /**
  * generate DataService file
@@ -216,13 +219,17 @@ function generateDataService(data){
     if (!data) {
         return;
     }
-    if (!fs.existsSync('models')) {
-        console.error('You need a models directory');
-        return;
+    if(path.extname(data) !== '.js'){
+        data += '.js';
     }
+
     var cwd = process.cwd();
     var seed = path.join(seedPath, 'dataservice/index.js');
-    var filePath = path.join(cwd, 'models', data + '.js');
+    var dataservice = path.join(cwd, 'models','dataServices');
+    if (!fs.existsSync(dataservice)) {
+        mkdir('-p', dataservice);
+    }
+    var filePath = path.join(dataservice, data);
     cp(seed, filePath);
     console.log(filePath,' created')
 }
