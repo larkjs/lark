@@ -1,4 +1,10 @@
+/**
+ * lark - router.js
+ * Copyright(c) 2015 mdemo(https://github.com/demohi)
+ * MIT Licensed
+ */
+
+'use strict';
 module.exports.views = {
-  engine: 'handlebars',
-  layout: 'layouts'
+    directory: 'example/views'
 };
