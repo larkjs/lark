@@ -12,7 +12,7 @@
 
 var lark = require('../lib/application');
 var app = require('../example/');
-var request = require('supertest').agent(app.listen());
+var request = require('supertest').agent(app.run());
 
 var development = {
   environment: 'development',
