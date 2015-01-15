@@ -20,7 +20,7 @@ var development = {
   bootstrap: {enable: false},
   mvc: {path: 'example/models'},
   router: {directory: 'example/controllers'},
-  views: {engine: 'handlebars', layout: 'layouts'}
+  views: {directory: 'example/views'}
 };
 
 
@@ -48,11 +48,11 @@ describe('lark-router', function () {
         .expect(404);
       done();
     });
-    it('should response "Hello /user/create"', function (done) {
+    it('should response "Hello /user/list"', function (done) {
       request
-        .get('/user/create')
+        .get('/user/list')
         .expect(200)
-        .expect('Hello /user/create', done);
+        .expect('Hello /user/list', done);
     });
 });
 
@@ -62,6 +62,17 @@ describe('lark-config', function () {
     JSON.stringify(app.config).should.equal(JSON.stringify(development));
     done();
   })
+});
+
+describe('lark-views', function(){
+
+  it('should response "views/user/index.html', function (done) {
+    request
+        .get('/user/create')
+        .expect(200)
+        .expect('<!DOCTYPE html>\n<html>\n<head lang="zh-CN">\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <title>index</title>\n</head>\n<body>\nuser/index.html\n</body>\n</html>\n'
+        , done);
+  });
 });
 
 
