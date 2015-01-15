@@ -99,6 +99,15 @@ program
     .usage('[something]')
     .action(generateHelper);
 
+/**
+ * command destroy
+ */
+program
+    .command('destroy')
+    .alias('d')
+    .description('code destroy')
+    .usage('[something]')
+    .action(destroyHelper);
 
 /**
  * custom help
@@ -239,6 +248,7 @@ function generateDataService(data){
  */
 function generateHelper(){
     if(arguments.length !=3){
+        console.log('Usage: lark g/generate [type] [name]')
         return;
     }
     var generateType = arguments['0'];
@@ -253,6 +263,33 @@ function generateHelper(){
         case 'data':
             generateDataService(arg);
             break;
+    }
+}
+
+/**
+ * delete models
+ */
+function destroyHelper() {
+    if(arguments.length !=3){
+        console.log('Usage: lark d/destroy [type] [name]')
+        return;
+    }
+    var generateType = arguments['0'];
+    var directory = path.dirname(darguments['1']);
+    var cwd = process.cwd();
+    var dirname = "";
+    switch (generateType){
+        case 'controller':
+            dirname = path.join(cwd, 'controllers', directory);
+            break;
+        case 'page':
+            dirname = path.join(cwd, 'models', 'pageServices', directory);
+            break;
+        case 'data':
+            dirname = path.join(cwd, 'models', 'dataServices', directory);
+            break;
+    shell.rm('-rf', dirname)
+    console.log(dirname, ' destoryed.')
     }
 }
 
