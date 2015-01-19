@@ -70,9 +70,7 @@ describe('lark-views', function(){
     request
         .get('/user/create')
         .expect(200)
-        .expect('<!DOCTYPE html>\n<html>\n<head lang="zh-CN">\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <title>index</title>\n</head>\n<body>\nuser/index.html\n</body>\n</html>\n'
-        , done);
+        .expect(/user create/, done);
   });
 });
-
 
