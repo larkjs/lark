@@ -13,6 +13,7 @@
 var lark = require('../lib/application');
 var app = require('../example/');
 var request = require('supertest').agent(app.run());
+var assert = require("assert");
 
 var development = {
   environment: 'development',
@@ -74,3 +75,15 @@ describe('lark-views', function(){
   });
 });
 
+
+describe('lark-log', function(){
+    it('should equal without config', function(){
+        var logger = lark.log();
+        var o = logger.info('hello');
+        assert.equal(o['message'], 'hello');
+        assert.equal(o['file'], 'index.js');
+        assert.equal(o['level'], 3);
+        assert.equal(o['title'], 'info');
+    });
+
+});

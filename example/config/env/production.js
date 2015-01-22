@@ -7,5 +7,5 @@
 'use strict';
 
 module.exports = {
-  port: 80
+    port: 80
 };
