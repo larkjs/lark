@@ -16,68 +16,78 @@ var request = require('supertest').agent(app.run());
 var assert = require("assert");
 
 var development = {
-  environment: 'development',
-  port: 3000,
-  bootstrap: {enable: false},
-  mvc: {path: 'example/models'},
-  router: {directory: 'example/controllers'},
-  views: {directory: 'example/views'}
+    environment: 'development',
+    port: 3000,
+    bootstrap: {enable: false},
+    log: {
+        files: {
+            debug: {
+                path: './example/log/debug.log',
+                options: {
+                    encoding: 'utf8'
+                }
+            }
+        }
+    },
+    mvc: {path: 'example/models'},
+    router: {directory: 'example/controllers'},
+    views: {directory: 'example/views'}
 };
 
 
 describe('lib/application.js', function () {
-  describe('app', function () {
-    it('should be instance of lark', function (done) {
-      var app = lark();
-      (app instanceof lark).should.be.ok;
-      done();
+    describe('app', function () {
+        it('should be instance of lark', function (done) {
+            var app = lark();
+            (app instanceof lark).should.be.ok;
+            done();
+        })
     })
-  })
 });
 
 
 describe('lark-router', function () {
     it('should response "dao-dataService-pageService"', function (done) {
-      request
-        .get('/')
-        .expect(200)
-        .expect('dao-dataService-pageService', done);
+        request
+            .get('/')
+            .expect(200)
+            .expect('dao-dataService-pageService', done);
     });
     it('should response "404"', function (done) {
-      request
-        .get('/user/')
-        .expect(404);
-      done();
+        request
+            .get('/user/')
+            .expect(404);
+        done();
     });
     it('should response "Hello /user/list"', function (done) {
-      request
-        .get('/user/list')
-        .expect(200)
-        .expect('Hello /user/list', done);
+        request
+            .get('/user/list')
+            .expect(200)
+            .expect('Hello /user/list', done);
     });
 });
 
 
 describe('lark-config', function () {
-  it('should equal config', function (done) {
-    JSON.stringify(app.config).should.equal(JSON.stringify(development));
-    done();
-  })
+    it('should equal config', function (done) {
+        JSON.stringify(app.config).should.equal(JSON.stringify(development));
+        done();
+    })
 });
 
-describe('lark-views', function(){
+describe('lark-views', function () {
 
-  it('should response "views/user/index.html', function (done) {
-    request
-        .get('/user/create')
-        .expect(200)
-        .expect(/user create/, done);
-  });
+    it('should response "views/user/index.html', function (done) {
+        request
+            .get('/user/create')
+            .expect(200)
+            .expect(/user create/, done);
+    });
 });
 
 
-describe('lark-log', function(){
-    it('should equal without config', function(){
+describe('lark-log', function () {
+    it('should equal without config', function () {
         var logger = lark.log();
         var o = logger.info('hello');
         assert.equal(o['message'], 'hello');
