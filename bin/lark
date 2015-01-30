@@ -48,7 +48,9 @@ program
     .alias('start')
     .description('run lark app with watch')
     .usage('<app>')
-    .action(runApp);
+    .action(function(){
+        execCmd();
+    });
 
 /**
  * command restart
@@ -59,8 +61,7 @@ program
     .description('restart app')
     .usage('<app>')
     .action(function(){
-        var cmd = ' node --harmony index.js --lark-restart';
-        exec(cmd, {async: false});
+        execCmd('--lark-restart');
     });
 
 /**
@@ -72,8 +73,7 @@ program
     .description('reload app')
     .usage('<app>')
     .action(function(){
-        var cmd = ' node --harmony index.js --lark-reload';
-        exec(cmd, {async: false});
+        execCmd('--lark-reload');
     });
 
 /**
@@ -85,9 +85,21 @@ program
     .description('stop app')
     .usage('<app>')
     .action(function(){
-        var cmd = ' node --harmony index.js --lark-stop';
-        exec(cmd, {async: false});
+        execCmd('--lark-delete');
     });
+
+/**
+ * command delete
+ */
+
+program
+    .command('stop')
+    .description('delete app')
+    .usage('<app>')
+    .action(function(){
+        execCmd('--lark-delete');
+    });
+
 
 /**
  * command generate
@@ -151,14 +163,15 @@ function createApp(app) {
 }
 
 /**
- * run the app
+ * init cmd
  */
-function runApp() {
+function execCmd(_cmd, config){
+    _cmd = _cmd || '';
     var cmd = '';
     if(program.env){
         cmd += 'NODE_ENV=' + program.env;
     }
-    cmd += ' node --harmony index.js';
+    cmd += ' node --harmony index.js ' + _cmd;
     exec(cmd, {async: false});
 }
 
