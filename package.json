@@ -37,7 +37,7 @@
     "debug": "^2.1.1",
     "got": "^2.3.0",
     "koa": "^0.16.0",
-    "lark-bootstrap": "~0.0.7",
+    "lark-bootstrap": "0.0.7",
     "lark-config": "0.3.0",
     "lark-log": "^0.1.5",
     "lark-mvc": "0.3.0",
