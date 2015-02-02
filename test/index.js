@@ -22,7 +22,7 @@ var development = {
     log: {
         files: {
             debug: {
-                path: './example/log/debug.log',
+                path: './example/logs/debug.log',
                 options: {
                     encoding: 'utf8'
                 }
