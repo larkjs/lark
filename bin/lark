@@ -151,36 +151,36 @@ function createApp(app) {
     var cwd = process.cwd();
     var appPath = path.join(cwd, app);
     var seed = path.join(seedPath, 'seed/*');
-                                          if (fs.existsSync(appPath)) {
-                                          console.error('%s is not a empty directory', appPath);
-                                          } else {
-                                          cp('-rf', seed, appPath);
-                                          cd(appPath);
-                                          exec('npm install');
-                                          var err = error();
-                                          if (!err) {
-                                          console.log('');
-                                          console.log('');
-                                          console.log('%s created success!', app);
-                                          console.log('you can run lark app by: ');
-                                          console.log('    $ cd %s', app);
-                                          console.log('    $ lark run')
-                                          }
-                                          }
-                                          }
-
-    /**
-                                         * init cmd
-                                         */
-    function execCmd(_cmd, config){
-        _cmd = _cmd || '';
-        var cmd = '';
-        if(program.env){
-            cmd += 'NODE_ENV=' + program.env;
+    if (fs.existsSync(appPath)) {
+        console.error('%s is not a empty directory', appPath);
+    } else {
+        cp('-rf', seed, appPath);
+        cd(appPath);
+        exec('npm install');
+        var err = error();
+        if (!err) {
+            console.log('');
+            console.log('');
+            console.log('%s created success!', app);
+            console.log('you can run lark app by: ');
+            console.log('    $ cd %s', app);
+            console.log('    $ lark run')
         }
-        cmd += ' node --harmony index.js ' + _cmd;
-        exec(cmd, {async: false});
     }
+}
+
+/**
+ * init cmd
+ */
+function execCmd(_cmd, config){
+    _cmd = _cmd || '';
+    var cmd = '';
+    if(program.env){
+        cmd += 'NODE_ENV=' + program.env;
+    }
+    cmd += ' node --harmony index.js ' + _cmd;
+    exec(cmd, {async: false});
+}
 
 /**
  * generateController
@@ -269,7 +269,7 @@ function generateDataService(data){
 function generateHelper(){
     if(arguments.length !=3){
         console.log('Usage: lark g/generate [type] [name]')
-            return;
+        return;
     }
     var generateType = arguments['0'];
     var arg = arguments['1'];
@@ -292,7 +292,7 @@ function generateHelper(){
 function destroyHelper() {
     if(arguments.length !=3){
         console.log('Usage: lark d/destroy [type] [name]')
-            return;
+        return;
     }
     var generateType = arguments['0'];
     var directory = path.dirname(darguments['1']);
@@ -308,8 +308,8 @@ function destroyHelper() {
         case 'data':
             dirname = path.join(cwd, 'models', 'dataServices', directory);
             break;
-            shell.rm('-rf', dirname)
-                console.log(dirname, ' destoryed.')
+        shell.rm('-rf', dirname)
+        console.log(dirname, ' destoryed.')
     }
 }
 
