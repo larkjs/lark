@@ -135,6 +135,13 @@ program.on('--help', function () {
 
 program.parse(process.argv);
 
+/**
+ * default output
+ */
+
+if (!process.argv.slice(2).length) {
+    program.outputHelp();
+}
 
 /**
  * create app
@@ -301,8 +308,8 @@ function destroyHelper() {
         case 'data':
             dirname = path.join(cwd, 'models', 'dataServices', directory);
             break;
-    shell.rm('-rf', dirname)
-    console.log(dirname, ' destoryed.')
+        shell.rm('-rf', dirname)
+        console.log(dirname, ' destoryed.')
     }
 }
 
