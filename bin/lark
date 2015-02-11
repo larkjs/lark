@@ -7,7 +7,6 @@ var program = require('commander');
 var fs = require('fs');
 var path = require('path');
 var shell = require('shelljs');
-var bootstrap = require('lark-bootstrap');
 
 var pkg = require('../package.json');
 var version = pkg.version;
@@ -16,6 +15,8 @@ var cd = shell.cd;
 var exec = shell.exec;
 var error = shell.error;
 var mkdir = shell.mkdir;
+var which = shell.which;
+var exit = shell.exit;
 var seedPath = path.dirname(require.resolve('lark-seed'));
 
 /**
@@ -27,6 +28,11 @@ program.version(version);
  * option env
  */
 program.option('-e, --env <env>');
+
+/**
+ * option port
+ */
+program.option('-p, --port <port>');
 
 /**
  * comman new
@@ -132,6 +138,12 @@ program.on('--help', function () {
     console.log('    $ lark generate controller user/create.js');
     console.log('');
 });
+
+program
+    .command('benchmark')
+    .alias('b')
+    .description('benchmark test (you need installed wrk)')
+    .action(benchmarkHelper);
 
 program.parse(process.argv);
 
@@ -308,11 +320,25 @@ function destroyHelper() {
         case 'data':
             dirname = path.join(cwd, 'models', 'dataServices', directory);
             break;
-        shell.rm('-rf', dirname)
+        shell.rm('-rf', dirname);
         console.log(dirname, ' destoryed.')
     }
 }
 
+
+function benchmarkHelper(){
+    var port = program.port || 3000;
+    if(!which('wrk')){
+        console.log('You need install wrk before use lark benchmark');
+        exit(1);
+    }
+    if (!fs.existsSync('benchmarks/run.sh')){
+        console.log('You need benchmarks/run.sh ');
+        exit(1);
+    }
+    console.log('wrk will test with port:%s', port);
+    exec('sh benchmarks/run.sh index.js ' + port)
+}
 
 //TODO: command test,benchmark，destory
 //TODO: option -w,-f
