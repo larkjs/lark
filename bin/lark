@@ -8,6 +8,7 @@ var fs = require('fs');
 var path = require('path');
 var shell = require('shelljs');
 
+var generator = require('../lib/generator');
 var pkg = require('../package.json');
 var version = pkg.version;
 var cp = shell.cp;
@@ -54,7 +55,7 @@ program
     .alias('start')
     .description('run lark app with watch')
     .usage('<app>')
-    .action(function(){
+    .action(function () {
         execCmd();
     });
 
@@ -66,7 +67,7 @@ program
     .command('restart')
     .description('restart app')
     .usage('<app>')
-    .action(function(){
+    .action(function () {
         execCmd('--lark-restart');
     });
 
@@ -78,7 +79,7 @@ program
     .command('reload')
     .description('reload app')
     .usage('<app>')
-    .action(function(){
+    .action(function () {
         execCmd('--lark-reload');
     });
 
@@ -90,7 +91,7 @@ program
     .command('stop')
     .description('stop app')
     .usage('<app>')
-    .action(function(){
+    .action(function () {
         execCmd('--lark-delete');
     });
 
@@ -102,7 +103,7 @@ program
     .command('stop')
     .description('delete app')
     .usage('<app>')
-    .action(function(){
+    .action(function () {
         execCmd('--lark-delete');
     });
 
@@ -160,34 +161,19 @@ if (!process.argv.slice(2).length) {
  * @param app
  */
 function createApp(app) {
-    var cwd = process.cwd();
-    var appPath = path.join(cwd, app);
-    var seed = path.join(seedPath, 'seed/*');
-    if (fs.existsSync(appPath)) {
-        console.error('%s is not a empty directory', appPath);
-    } else {
-        cp('-rf', seed, appPath);
-        cd(appPath);
-        exec('npm install');
-        var err = error();
-        if (!err) {
-            console.log('');
-            console.log('');
-            console.log('%s created success!', app);
-            console.log('you can run lark app by: ');
-            console.log('    $ cd %s', app);
-            console.log('    $ lark run')
-        }
+    if (!app) {
+        return;
     }
+    generator('lark', app);
 }
 
 /**
  * init cmd
  */
-function execCmd(_cmd, config){
+function execCmd(_cmd, config) {
     _cmd = _cmd || '';
     var cmd = '';
-    if(program.env){
+    if (program.env) {
         cmd += 'NODE_ENV=' + program.env;
     }
     cmd += ' node --harmony index.js ' + _cmd;
@@ -206,86 +192,75 @@ function generateController(directory) {
     if (!directory) {
         return;
     }
-    if (!fs.existsSync('controllers')) {
-        console.error('You need a controllers directory');
-        return;
-    }
-    var cwd = process.cwd();
-    var seed = path.join(seedPath, 'controller/index.js');
-    var dirname = '';
     var filePath = '';
     var extname = path.extname(directory);
     if (extname && extname === '.js') {
         filePath = path.join(cwd, 'controllers', directory);
-        dirname = path.join(cwd, 'controllers', path.dirname(directory));
     } else if (!extname) {
         filePath = path.join(cwd, 'controllers', directory, 'index.js');
-        dirname = path.join(cwd, 'controllers', directory);
     }
-
-    if (!fs.existsSync(dirname)) {
-        mkdir('-p', dirname);
-    }
-
-    cp(seed, filePath);
-
-    console.log(filePath,' created')
+    generator('lark:controller', filePath)
 }
 /**
  * generate PageService file
  * @param page  pageService file name
  */
-function generatePageService(page){
+function generatePageService(page) {
     if (!page) {
         return;
     }
-    if(path.extname(page) !== '.js'){
+    if (path.extname(page) !== '.js') {
         page += '.js';
     }
-    var cwd = process.cwd();
-    var seed = path.join(seedPath, 'pageservice/index.js');
-    var pageservice = path.join(cwd, 'models','pageServices');
-    if (!fs.existsSync(pageservice)) {
-        mkdir('-p', pageservice);
-    }
-    var filePath = path.join(pageservice, page);
-    cp(seed, filePath);
-    console.log(filePath,' created');
+    generator('lark:page', page);
 }
 /**
  * generate DataService file
  * @param data dataService file name
  */
-function generateDataService(data){
+function generateDataService(data) {
     if (!data) {
         return;
     }
-    if(path.extname(data) !== '.js'){
+    if (path.extname(data) !== '.js') {
         data += '.js';
     }
-
-    var cwd = process.cwd();
-    var seed = path.join(seedPath, 'dataservice/index.js');
-    var dataservice = path.join(cwd, 'models','dataServices');
-    if (!fs.existsSync(dataservice)) {
-        mkdir('-p', dataservice);
-    }
-    var filePath = path.join(dataservice, data);
-    cp(seed, filePath);
-    console.log(filePath,' created')
+    generator('lark:data', data);
 }
 
 /**
- *
+ * generate dao file
+ * @param dao  file name
  */
-function generateHelper(){
-    if(arguments.length !=3){
-        console.log('Usage: lark g/generate [type] [name]')
+function generateDaoService(dao) {
+    if (!dao) {
+        return;
+    }
+    if (path.extname(dao) !== '.js') {
+        dao += '.js';
+    }
+    generator('lark:dao', dao);
+}
+
+/**
+ * generate dao file
+ * @param dao  file name
+ */
+function generateBenchmark() {
+    generator('lark:benchmark');
+}
+
+/**
+ * generateHelper
+ */
+function generateHelper() {
+    if (arguments['0'] != 'benchmark' && arguments.length != 3 ) {
+        console.log('Usage: lark g/generate [type] [name]');
         return;
     }
     var generateType = arguments['0'];
     var arg = arguments['1'];
-    switch (generateType){
+    switch (generateType) {
         case 'controller':
             generateController(arg);
             break;
@@ -295,6 +270,12 @@ function generateHelper(){
         case 'data':
             generateDataService(arg);
             break;
+        case 'dao':
+            generateDaoService(arg);
+            break;
+        case 'benchmark':
+            generateBenchmark();
+            break;
     }
 }
 
@@ -302,7 +283,7 @@ function generateHelper(){
  * delete models
  */
 function destroyHelper() {
-    if(arguments.length !=3){
+    if (arguments.length != 3) {
         console.log('Usage: lark d/destroy [type] [name]')
         return;
     }
@@ -310,7 +291,7 @@ function destroyHelper() {
     var directory = path.dirname(darguments['1']);
     var cwd = process.cwd();
     var dirname = "";
-    switch (generateType){
+    switch (generateType) {
         case 'controller':
             dirname = path.join(cwd, 'controllers', directory);
             break;
@@ -320,19 +301,19 @@ function destroyHelper() {
         case 'data':
             dirname = path.join(cwd, 'models', 'dataServices', directory);
             break;
-        shell.rm('-rf', dirname);
-        console.log(dirname, ' destoryed.')
+            shell.rm('-rf', dirname);
+            console.log(dirname, ' destoryed.')
     }
 }
 
 
-function benchmarkHelper(){
+function benchmarkHelper() {
     var port = program.port || 3000;
-    if(!which('wrk')){
+    if (!which('wrk')) {
         console.log('You need install wrk before use lark benchmark');
         exit(1);
     }
-    if (!fs.existsSync('benchmarks/run.sh')){
+    if (!fs.existsSync('benchmarks/run.sh')) {
         console.log('You need benchmarks/run.sh ');
         exit(1);
     }
