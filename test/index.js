@@ -31,7 +31,7 @@ var development = {
     },
     mvc: {path: 'example/models'},
     router: {directory: 'example/controllers'},
-    views: {directory: 'example/views'}
+    views: {directory: 'example/views', map: {ejs:"ejs"}}
 };
 
 
@@ -63,7 +63,7 @@ describe('lark-router', function () {
         request
             .get('/user/list')
             .expect(200)
-            .expect('Hello /user/list', done);
+            .expect('<h2>lark</h2>', done);
     });
 });
 
