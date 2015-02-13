@@ -11,14 +11,10 @@ var shell = require('shelljs');
 var generator = require('../lib/generator');
 var pkg = require('../package.json');
 var version = pkg.version;
-var cp = shell.cp;
-var cd = shell.cd;
 var exec = shell.exec;
 var error = shell.error;
-var mkdir = shell.mkdir;
 var which = shell.which;
 var exit = shell.exit;
-var seedPath = path.dirname(require.resolve('lark-seed'));
 
 /**
  * set lark version
