@@ -164,7 +164,7 @@ function createApp(app) {
     if (!app) {
         return;
     }
-    generator('lark', app);
+    generator('lark ' + app);
 }
 
 /**
@@ -199,7 +199,7 @@ function generateController(directory) {
     } else if (!extname) {
         filePath = path.join(cwd, 'controllers', directory, 'index.js');
     }
-    generator('lark:controller', filePath)
+    generator('lark:controller ' + filePath)
 }
 /**
  * generate PageService file
@@ -212,7 +212,7 @@ function generatePageService(page) {
     if (path.extname(page) !== '.js') {
         page += '.js';
     }
-    generator('lark:page', page);
+    generator('lark:page ' + page);
 }
 /**
  * generate DataService file
@@ -225,7 +225,7 @@ function generateDataService(data) {
     if (path.extname(data) !== '.js') {
         data += '.js';
     }
-    generator('lark:data', data);
+    generator('lark:data ' + data);
 }
 
 /**
@@ -239,7 +239,7 @@ function generateDaoService(dao) {
     if (path.extname(dao) !== '.js') {
         dao += '.js';
     }
-    generator('lark:dao', dao);
+    generator('lark:dao ' + dao);
 }
 
 /**

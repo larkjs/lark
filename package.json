@@ -35,7 +35,7 @@
     "clone": "^0.2.0",
     "commander": "^2.5.1",
     "debug": "^2.1.1",
-    "generator-lark": "^0.3.0",
+    "generator-lark": "^0.4.0",
     "got": "^2.3.0",
     "koa": "^0.16.0",
     "lark-bootstrap": "~0.0.7",
