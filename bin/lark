@@ -258,6 +258,7 @@ function generateHelper() {
     var arg = arguments['1'];
     switch (generateType) {
         case 'controller':
+        case 'route':
             generateController(arg);
             break;
         case 'page':
