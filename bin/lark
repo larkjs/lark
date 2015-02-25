@@ -45,6 +45,16 @@ program
  * comman run/server
  */
 
+/**
+ * comman env
+ */
+program
+    .command('env')
+    .alias('e')
+    .description('set default running environment for the app')
+    .usage('[something]')
+    .action(setEnv);
+
 program
     .command('run')
     .alias('server')
@@ -163,6 +173,53 @@ function createApp(app) {
     generator('lark ' + app);
 }
 
+function setEnv(env){
+    if(typeof env != 'string') env = null;
+    return defaultEnv(env, true);
+};
+
+function defaultEnv(env, display){ 
+    if(env == 'dev')  env = 'development';
+    if(env == 'prod') env = 'production';
+    if(env && env != 'development' && env != 'production' && env != 'clear'){
+        console.error('Invalid env <%s>');
+        console.error('    Available candiddates : development production');
+        return;
+    }
+    var env_filepath;
+    var ori_cwd = process.cwd(); 
+    var app_dir = cwd;
+    while(true){
+        var cwd = process.cwd();
+        if(fs.existsSync('.lark-env')) break;
+        if(cwd == '/'){
+            env_filepath = path.join(ori_cwd, '.lark-env');
+            exec('touch ' + env_filepath, {async : false});
+            break;
+        }
+        cd('..');
+    }
+
+    if(!fs.existsSync('.lark-env')) throw new Error('Internal Error');
+    if(env){
+        fs.writeFileSync('.lark-env',env);
+        display && console.log('Default running environment is set to ' + env);
+        return env;
+    }
+    else{
+        env = fs.readFileSync('.lark-env');
+        if(!env || (env != 'development' && env != 'production')){
+            display && console.log('Default running environment is not set yet');
+            return;
+        }
+        else{
+            display && console.log('Default running environment is ' + env);
+            return env;
+        }
+    }
+}
+
+
 /**
  * init cmd
  */
@@ -171,6 +228,9 @@ function execCmd(_cmd, config) {
     var cmd = '';
     if (program.env) {
         cmd += 'NODE_ENV=' + program.env;
+    }
+    else if(defaultEnv()){
+        cmd += 'NODE_ENV=' + defaultEnv();
     }
     cmd += ' node --harmony index.js ' + _cmd;
     exec(cmd, {async: false});
