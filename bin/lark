@@ -186,21 +186,8 @@ function defaultEnv(env, display){
         console.error('    Available candiddates : development production');
         return;
     }
-    var env_filepath;
-    var ori_cwd = process.cwd(); 
-    var app_dir = cwd;
-    while(true){
-        var cwd = process.cwd();
-        if(fs.existsSync('.lark-env')) break;
-        if(cwd == '/'){
-            env_filepath = path.join(ori_cwd, '.lark-env');
-            exec('touch ' + env_filepath, {async : false});
-            break;
-        }
-        cd('..');
-    }
 
-    if(!fs.existsSync('.lark-env')) throw new Error('Internal Error');
+    if(!fs.existsSync('.lark-env')) exec('touch .lark-env');
     if(env){
         fs.writeFileSync('.lark-env',env);
         display && console.log('Default running environment is set to ' + env);
