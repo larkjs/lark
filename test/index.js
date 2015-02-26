@@ -63,7 +63,7 @@ describe('lark-router', function () {
         request
             .get('/user/list')
             .expect(200)
-            .expect('<h2>lark</h2>', done);
+            .expect('\n<h2>lark</h2>\n\n', done);
     });
 });
 
