@@ -39,6 +39,7 @@
     "got": "^2.3.0",
     "koa": "^0.16.0",
     "lark-bootstrap": "~0.0.7",
+    "lark-realtime": "~0.0.2",
     "lark-config": "0.3.0",
     "lark-log": "^0.1.5",
     "lark-mvc": "0.3.0",
