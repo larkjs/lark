@@ -37,6 +37,9 @@ $ lark new lark-example
 $ npm run benchmark
 ```
 
+## More
+
+You can find more infomation in our [wiki](https://github.com/larkjs/lark/wiki) 
 
 [npm-image]: https://img.shields.io/npm/v/lark.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/lark
