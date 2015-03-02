@@ -15,8 +15,8 @@ Lark is a node.js framework based on [Koa](https://github.com/koajs/koa)
 $ npm install lark
 ```
 
-  To use Lark you must be running __node 0.11.13__ or higher for generator and promise support, and must run node(1)
-  with the `--harmony` flag. If you don't like typing this, add an alias to your shell profile:
+  To use Lark you must be running __node 0.12__ or io.js for generator and promise support, and must run node(1)
+  with the `--harmony` flag with Node.js. If you don't like typing this, add an alias to your shell profile:
 
 ```
 alias node='node --harmony'
@@ -36,12 +36,6 @@ $ lark new lark-example
 ```
 $ npm run benchmark
 ```
-
-
-## Examples
-
-[lark-seed](https://github.com/larkjs/lark-seed)
-
 
 
 [npm-image]: https://img.shields.io/npm/v/lark.svg?style=flat-square
