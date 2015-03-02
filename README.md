@@ -31,7 +31,7 @@ $ npm install -g lark
 $ lark new lark-example
 ```
 
-Our (tutorial)[https://github.com/larkjs/lark/wiki/lark.js-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97] (Chinese Only)
+
 
 ## Benchmark
 
@@ -39,12 +39,9 @@ Our (tutorial)[https://github.com/larkjs/lark/wiki/lark.js-%E5%85%A5%E9%97%A8%E6
 $ npm run benchmark
 ```
 
-## How to Contribute
-
-See our [doc](https://github.com/larkjs/lark/wiki/%E6%80%8E%E6%A0%B7%E8%B4%A1%E7%8C%AE%E4%BB%A3%E7%A0%81)(Chinese Only)
-
 ## More
-
+[Tutorial(Chinese Only)](https://github.com/larkjs/lark/wiki/lark.js-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97) 
+[How to Contribute(Chinese Only)](https://github.com/larkjs/lark/wiki/%E6%80%8E%E6%A0%B7%E8%B4%A1%E7%8C%AE%E4%BB%A3%E7%A0%81)
 You can find more infomation in our [wiki](https://github.com/larkjs/lark/wiki) 
 
 [npm-image]: https://img.shields.io/npm/v/lark.svg?style=flat-square
