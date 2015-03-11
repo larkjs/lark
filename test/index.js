@@ -68,6 +68,22 @@ describe('lark-router', function () {
 });
 
 
+describe('lark-error-handler', function () {
+    it('should response "500"', function (done) {
+        request
+            .get('/error')
+            .expect(500);
+        done();
+    });
+    it('should response "400"', function (done) {
+        request
+            .get('/badrequest')
+            .expect(400);
+        done();
+    });
+});
+
+
 describe('lark-config', function () {
     it('should equal config', function (done) {
         JSON.stringify(app.config).should.equal(JSON.stringify(development));
