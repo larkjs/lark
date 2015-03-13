@@ -4,6 +4,8 @@
 
 module.exports = function (router) {
     router.get('/', function *(next) {
+        this.log.info('controller:index');
+        this.log.info('controller:index2');
         this.body = this.pageServices['demo'].render();
         yield next;
     });
