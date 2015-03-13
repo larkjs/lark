@@ -41,7 +41,7 @@
     "koa-static": "~1.4.9",
     "lark-bootstrap": "~0.0.9",
     "lark-config": "0.3.0",
-    "lark-log": "^0.1.5",
+    "lark-log": "^0.2.0",
     "lark-mvc": "0.4.0",
     "lark-router": "0.2.1",
     "lark-views": "^0.3.1",
