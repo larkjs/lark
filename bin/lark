@@ -1,5 +1,3 @@
-#!/usr/bin/env node --harmony
-
 /**
  * Module dependencies.
  */
@@ -219,7 +217,7 @@ function execCmd(_cmd, config) {
     else if(defaultEnv()){
         cmd += 'NODE_ENV=' + defaultEnv();
     }
-    cmd += ' node --harmony index.js ' + _cmd;
+    cmd += ' ' + process.execPath + ' ' + process.execArgv.join(" ") + ' index.js ' + _cmd;
     exec(cmd, {async: false});
 }
 
