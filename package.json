@@ -51,7 +51,8 @@
   "devDependencies": {
     "mocha": "^2.0.1",
     "should": "^4.4.1",
-    "supertest": "^0.15.0"
+    "supertest": "^0.15.0",
+    "ejs": "^2.2.4"
   },
   "peerDependencies": {
     "ejs": "^2.2.4"
