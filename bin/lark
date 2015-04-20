@@ -44,7 +44,7 @@ program
  */
 
 /**
- * comman env
+ * comman default-env
  */
 program
     .command('default-env')
