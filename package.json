@@ -39,7 +39,7 @@
     "got": "^2.3.0",
     "koa": "^0.16.0",
     "koa-static": "~1.4.9",
-    "lark-bootstrap": "~0.0.9",
+    "lark-bootstrap": "~0.0.10",
     "lark-config": "0.3.0",
     "lark-log": "^0.2.0",
     "lark-mvc": "0.4.0",
@@ -49,9 +49,12 @@
     "thenify-all": "^1.6.0"
   },
   "devDependencies": {
-    "ejs": "^2.2.4",
     "mocha": "^2.0.1",
     "should": "^4.4.1",
-    "supertest": "^0.15.0"
+    "supertest": "^0.15.0",
+    "ejs": "^2.2.4"
+  },
+  "peerDependencies": {
+    "ejs": "^2.2.4"
   }
 }
