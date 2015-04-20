@@ -96,7 +96,7 @@ program
     .description('stop app')
     .usage('<app>')
     .action(function () {
-        execCmd('--lark-delete');
+        execCmd('--lark-stop');
     });
 
 /**
@@ -104,7 +104,7 @@ program
  */
 
 program
-    .command('stop')
+    .command('delete')
     .description('delete app')
     .usage('<app>')
     .action(function () {
