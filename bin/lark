@@ -44,14 +44,14 @@ program
  */
 
 /**
- * comman env
+ * comman default-env
  */
 program
-    .command('env')
-    .alias('e')
+    .command('default-env')
+    .alias('de')
     .description('set default running environment for the app')
     .usage('[something]')
-    .action(setEnv);
+    .action(setDefaultEnv);
 
 program
     .command('run')
@@ -171,7 +171,7 @@ function createApp(app) {
     generator('lark ' + app);
 }
 
-function setEnv(env){
+function setDefaultEnv(env){
     if(typeof env != 'string') env = null;
     return defaultEnv(env, true);
 };
