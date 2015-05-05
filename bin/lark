@@ -124,6 +124,13 @@ program
     .usage('[something]')
     .action(generateHelper);
 
+program
+    .command('create')
+    .alias('c')
+    .description('code generator')
+    .usage('[something]')
+    .action(generateHelper);
+
 /**
  * command destroy
  */
@@ -238,9 +245,11 @@ function generateController(directory) {
     var filePath = '';
     var extname = path.extname(directory);
     if (extname && extname === '.js') {
-        filePath = path.join(cwd, 'controllers', directory);
+        //filePath = path.join(cwd, 'controllers', directory);
+        filePath = directory;
     } else if (!extname) {
-        filePath = path.join(cwd, 'controllers', directory, 'index.js');
+        //filePath = path.join(cwd, 'controllers', directory, 'index.js');
+        filePath = path.join(directory, 'index.js');
     }
     generator('lark:controller ' + filePath)
 }
