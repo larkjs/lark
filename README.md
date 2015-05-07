@@ -17,7 +17,7 @@ $ npm install -g lark
 
   To use Lark you must be running __node 0.12__ or io.js for generator and promise support.
   
-  If you don't have the permission to install globally, or your node is not install globally, use alias to work around :
+  If you don't have the permission to install globally, or your node is not installed globally, use alias to work around :
 
 ```
 $ npm install lark
