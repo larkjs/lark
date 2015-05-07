@@ -12,26 +12,35 @@ Lark is a node.js framework based on [Koa](https://github.com/koajs/koa)
 ## Installation
 
 ```
+$ npm install -g lark
+```
+
+  To use Lark you must be running __node 0.12__ or io.js for generator and promise support.
+  
+  If you don't have the permission to install globally, or your node is not install globally, use alias to work around :
+
+```
 $ npm install lark
+$ alias "lark=${YOUR_NODE_PATH} --harmony  `pwd`/node_modules/.bin/lark"
 ```
 
-  To use Lark you must be running __node 0.12__ or io.js for generator and promise support, and must run node(1)
-  with the `--harmony` flag with Node.js. If you don't like typing this, add an alias to your shell profile:
+  Type `lark`, if lark is correctly installed, you'll see the usage info.
 
-```
-alias node='node --harmony'
-```
- 
 ## Quick Start
 
-The quickest way to get started with lark is to utilize the executable lark to generate an application as shown below:
+  The quickest way to get started with lark is to utilize the executable lark to generate an application as shown below:
 
 ```
-$ npm install -g lark
-$ lark new lark-example
+$ lark new lark-app
 ```
 
+  Lark will create a project name _larkApp_ under the same directory.
+  
+  Try to run this app.
 
+```
+$ lark run
+```
 
 ## Benchmark
 
