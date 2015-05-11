@@ -1,12 +1,16 @@
 /**
  * main lib of lark
  */
-var Application = require('Application')
+var Application = require('./lib/application')
+
+/**
+ * promise helper
+ */
+var promisify = require('./lib/promisify');
 
 /**
  * lark interfaces
  */
-var promisify = require('./promisify');
 
 Application.promisify = promisify.promisify;
 Application.promisifyAll = promisify.promisifyAll;
