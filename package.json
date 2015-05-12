@@ -1,8 +1,7 @@
 {
   "name": "lark",
-  "version": "0.8.8",
+  "version": "0.8.9",
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
-  "main": "lib/application.js",
   "scripts": {
     "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony --require should test/",
     "benchmark": "sh benchmarks/run.sh example/index.js 3000"
@@ -40,11 +39,11 @@
     "koa": "^0.20.0",
     "koa-static": "~1.4.9",
     "lark-bootstrap": "~0.0.11",
-    "lark-config": "~0.4.1",
-    "lark-log": "^0.2.0",
-    "lark-mvc": "0.4.0",
-    "lark-router": "^0.3.0",
-    "lark-views": "^0.3.1",
+    "lark-config": "~0.4.2",
+    "lark-log": "~1.1.0",
+    "lark-router": "^0.4.1",
+    "lark-mvc": "^0.4.3",
+    "lark-views": "^0.3.2",
     "shelljs": "^0.4.0",
     "thenify-all": "^1.6.0"
   },

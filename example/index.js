@@ -1,10 +1,13 @@
 /**
  * Created by mdemo on 14/12/8.
  */
+console.log("Set main module to example/index.js");
+process.mainModule = module;
+
 var lark = require('..');
 var http = lark.http;
 var app = module.exports = lark({
-  directory: "example/config"
+  directory: "config"
 });
 
 app.run(3000, function(port){
