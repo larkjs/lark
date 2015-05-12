@@ -7,5 +7,5 @@
 'use strict';
 
 module.exports.mvc = {
-  path: 'example/models'
+  path: 'models'
 };

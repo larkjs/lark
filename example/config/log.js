@@ -8,7 +8,7 @@
 module.exports.log = {
     files: {
         debug: {
-            path: './example/logs/debug.log',
+            path: './logs/debug.log',
             options: {
                 encoding: 'utf8'
             }

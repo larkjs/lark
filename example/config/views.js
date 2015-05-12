@@ -6,7 +6,7 @@
 
 'use strict';
 module.exports.views = {
-    directory: 'example/views',
+    directory: 'views',
     map: {
         ejs: "ejs"
     }

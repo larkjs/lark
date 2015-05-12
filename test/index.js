@@ -9,11 +9,17 @@
 /**
  * Module dependencies.
  */
-
-var lark = require('../lib/application');
-var app = require('../example/');
-var request = require('supertest').agent(app.run());
 var assert = require("assert");
+var fs = require('fs');
+var path = require('path');
+
+var cwd = process.cwd();
+clear();
+
+var app = require('../example/');
+var lark = require('../lib/application');
+var request = require('supertest').agent(app.run());
+var should = require('should');
 
 var development = {
     environment: 'development',
@@ -22,16 +28,16 @@ var development = {
     log: {
         files: {
             debug: {
-                path: './example/logs/debug.log',
+                path: './logs/debug.log',
                 options: {
                     encoding: 'utf8'
                 }
             }
         }
     },
-    mvc: {path: 'example/models'},
-    router: {directory: 'example/controllers'},
-    views: {directory: 'example/views', map: {ejs:"ejs"}}
+    mvc: {path: 'models'},
+    router: {directory: 'controllers'},
+    views: {directory: 'views', map: {ejs:"ejs"}}
 };
 
 
@@ -101,15 +107,42 @@ describe('lark-views', function () {
     });
 });
 
-
 describe('lark-log', function () {
-    it('should equal without config', function () {
-        var logger = lark.log();
-        var o = logger.info('hello');
-        assert.equal(o['message'], 'hello');
-        assert.equal(o['file'], 'index.js');
-        assert.equal(o['level'], 3);
-        assert.equal(o['title'], 'info');
+    var logger = larkLog;
+
+    
+    it('should be instance of Logger', function (done) {
+        logger.should.be.an.instanceOf(require('lark-log/lib/Logger'));
+        done();
     });
 
+    it('should be "INFO xxx controller:index" in app.info.log', function (done) {
+        var content = fs.readFileSync(path.join(cwd,'logs','app.info.log'));
+        content.should.be.an.instanceOf(Buffer);
+        content = content.toString().split('\n').filter(function (line) {
+            return line.trim() != '';
+        });
+        content.length.should.be.equal(2);
+        should(content[0].match(/^INFO: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} controller:index$/)).be.ok;
+        should(content[1].match(/^INFO: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} controller:index2$/)).be.ok;
+        done();
+    });
 });
+
+function clear () {
+    function clearLogs () {
+        ['app.info.log', 'app.log', 'app.sys.log'].forEach(function (filename) {
+            try {
+                fs.unlinkSync(path.join(cwd, 'logs', filename));
+            }
+            catch (e) {}
+        });
+        try {
+            fs.rmdirSync(path.join(cwd, 'logs'));
+        }
+        catch (e) {}
+    };
+
+    clearLogs();
+    process.on('exit', clearLogs);
+}
