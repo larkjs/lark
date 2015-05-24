@@ -1,3 +1,10 @@
-#!/usr/bin/env node --harmony
+#!/bin/sh
 
+cwd=`pwd`;
+cd `dirname $0`;
+
+exec node --harmony <<EOF
 require('../lib/commands');
+EOF
+
+cd ${cwd};
