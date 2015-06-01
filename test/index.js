@@ -109,18 +109,17 @@ describe('lark-views', function () {
 
 describe('lark-log', function () {
     var logger = larkLog;
-
     
     it('should be instance of Logger', function (done) {
         logger.should.be.an.instanceOf(require('lark-log/lib/Logger'));
         done();
     });
 
-    it('should be "INFO xxx controller:index" in app.info.log', function (done) {
-        var content = fs.readFileSync(path.join(cwd,'logs','app.info.log'));
+    it('should be "INFO xxx controller:index" in app.log', function (done) {
+        var content = fs.readFileSync(path.join(cwd,'logs','app.log'));
         content.should.be.an.instanceOf(Buffer);
         content = content.toString().split('\n').filter(function (line) {
-            return line.trim() != '';
+            return line.trim().match(/^INFO:/);
         });
         content.length.should.be.equal(2);
         should(content[0].match(/^INFO: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} controller:index$/)).be.ok;
@@ -131,7 +130,7 @@ describe('lark-log', function () {
 
 function clear () {
     function clearLogs () {
-        ['app.info.log', 'app.log', 'app.sys.log'].forEach(function (filename) {
+        ['app.log'].forEach(function (filename) {
             try {
                 fs.unlinkSync(path.join(cwd, 'logs', filename));
             }
