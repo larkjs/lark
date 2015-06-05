@@ -51,12 +51,6 @@ $ lark run
 
 You can see demo here: https://github.com/larkjs/lark-demo .
 
-## Benchmark
-
-```
-$ npm run benchmark
-```
-
 ## More
 
 You can find more infomation in our [wiki](https://github.com/larkjs/lark/wiki) 
