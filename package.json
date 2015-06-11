@@ -39,7 +39,7 @@
     "got": "^3.0.0",
     "koa": "^0.20.0",
     "koa-static": "~1.4.9",
-    "koa-bodyparser": "2.0.0",
+    "koa-bodyparser": "~2.0.0",
     "lark-bootstrap": "~0.1.5",
     "lark-config": "~0.4.2",
     "lark-log": "~1.2.2",
@@ -52,8 +52,7 @@
   "devDependencies": {
     "mocha": "^2.0.1",
     "should": "^4.4.1",
-    "supertest": "^0.15.0",
-    "ejs": "^2.2.4"
+    "supertest": "^0.15.0"
   },
   "peerDependencies": {
     "ejs": "^2.2.4"
