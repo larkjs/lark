@@ -38,7 +38,6 @@ var development = {
     router: {directory: 'controllers'},
     views: {directory: 'views', map: {ejs:"ejs"}},
     environment: 'development',
-    configPath: path.join(__dirname, '../example/config'),
 };
 
 
@@ -93,6 +92,7 @@ describe('lark-error-handler', function () {
 
 describe('lark-config', function () {
     it('should equal config', function (done) {
+        delete app.config.configPath;
         JSON.stringify(app.config).should.equal(JSON.stringify(development));
         done();
     })
