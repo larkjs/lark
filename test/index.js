@@ -22,7 +22,6 @@ var request = require('supertest').agent(app.run());
 var should = require('should');
 
 var development = {
-    environment: 'development',
     port: 3000,
     bootstrap: {enable: false},
     log: {
@@ -37,7 +36,9 @@ var development = {
     },
     mvc: {path: 'models'},
     router: {directory: 'controllers'},
-    views: {directory: 'views', map: {ejs:"ejs"}}
+    views: {directory: 'views', map: {ejs:"ejs"}},
+    environment: 'development',
+    configPath: path.join(__dirname, '../example/config'),
 };
 
 
