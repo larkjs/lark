@@ -22,7 +22,6 @@ var request = require('supertest').agent(app.run());
 var should = require('should');
 
 var development = {
-    environment: 'development',
     port: 3000,
     bootstrap: {enable: false},
     log: {
@@ -37,7 +36,8 @@ var development = {
     },
     mvc: {path: 'models'},
     router: {directory: 'controllers'},
-    views: {directory: 'views', map: {ejs:"ejs"}}
+    views: {directory: 'views', map: {ejs:"ejs"}},
+    environment: 'development',
 };
 
 
@@ -92,6 +92,7 @@ describe('lark-error-handler', function () {
 
 describe('lark-config', function () {
     it('should equal config', function (done) {
+        delete app.config.configPath;
         JSON.stringify(app.config).should.equal(JSON.stringify(development));
         done();
     })
