@@ -40,7 +40,7 @@
     "koa": "^0.20.0",
     "koa-static": "~1.4.9",
     "koa-bodyparser": "~2.0.0",
-    "lark-bootstrap": "~0.1.6",
+    "lark-bootstrap": "~0.1.7",
     "lark-config": "~0.4.4",
     "lark-log": "~1.2.4",
     "lark-router": "^0.4.2",
