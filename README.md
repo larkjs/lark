@@ -15,15 +15,6 @@ Lark is a node.js framework based on [Koa](https://github.com/koajs/koa)
 $ npm install -g lark
 ```
 
-  To use Lark you must be running __node 0.12__ or io.js for generator and promise support.
-  
-  If you don't have the permission to install globally, or your node is not installed globally, use alias to work around :
-
-```
-$ npm install lark
-$ alias "lark=${YOUR_NODE_PATH} --harmony  `pwd`/node_modules/.bin/lark"
-```
-
   Type `lark`, if lark is correctly installed, you'll see the usage info.
 
 ## Quick Start
