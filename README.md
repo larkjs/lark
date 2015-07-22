@@ -33,15 +33,6 @@ $ lark new lark-app
 $ lark run
 ```
 
-## Tutorial
-
-[Tutorial(Chinese Only)](https://github.com/larkjs/lark/wiki/lark.js-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97) 
-
-
-## Examples
-
-You can see demo here: https://github.com/larkjs/lark-demo .
-
 ## More
 
 You can find more infomation in our [wiki](https://github.com/larkjs/lark/wiki) 
