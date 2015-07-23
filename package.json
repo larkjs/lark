@@ -1,6 +1,10 @@
 {
   "name": "lark",
+<<<<<<< HEAD
   "version": "0.11.0",
+=======
+  "version": "0.10.10",
+>>>>>>> 8a484b84a4f26b314638e548ac8fa135d2655368
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
   "scripts": {
     "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony --require should test/",
@@ -32,6 +36,14 @@
     "bin"
   ],
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "clone": "^1.0.2",
+    "commander": "^2.8.1",
+    "debug": "^2.1.3",
+    "generator-lark": "^0.5.3",
+    "got": "^3.0.0",
+>>>>>>> 8a484b84a4f26b314638e548ac8fa135d2655368
     "koa": "^0.20.0",
     "koa-static": "~1.4.9",
     "koa-bodyparser": "~2.0.0",
