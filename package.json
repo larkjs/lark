@@ -14,12 +14,17 @@
     "url": "https://github.com/larkjs/lark.git"
   },
   "keywords": [
+    "node",
+    "web framework",
+    "lark",
+    "larkjs",
+    "koajs",
     "koa",
     "industrial",
     "co"
   ],
   "engines": {
-    "node": ">= 0.11.13"
+    "node": ">= 0.11.14"
   },
   "license": "MIT",
   "bugs": {
@@ -32,14 +37,6 @@
     "bin"
   ],
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "clone": "^1.0.2",
-    "commander": "^2.8.1",
-    "debug": "^2.1.3",
-    "generator-lark": "^0.5.3",
-    "got": "^3.0.0",
->>>>>>> 8a484b84a4f26b314638e548ac8fa135d2655368
     "koa": "^0.20.0",
     "koa-static": "~1.4.9",
     "koa-bodyparser": "~2.0.0",
