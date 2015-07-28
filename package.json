@@ -43,7 +43,7 @@
     "lark-bootstrap": "~0.1.7",
     "lark-config": "~0.4.4",
     "lark-commands": "~0.0.0",
-    "lark-log": "~1.2.4",
+    "lark-log": "~1.2.9",
     "lark-router": "^0.4.2",
     "lark-mvc": "^0.4.5",
     "lark-views": "^0.3.3",
