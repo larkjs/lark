@@ -5,6 +5,8 @@ var lark = require('..');
 var app = module.exports = lark({
         directory: "config"
     });
-app.run(3000, function(port){
-    console.log('running on', port);
-});
+if (!module.parent) {
+    app.run(3000, function(port){
+        console.log('running on', port);
+    });
+}
