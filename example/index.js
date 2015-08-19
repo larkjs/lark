@@ -5,6 +5,8 @@ var lark = require('..');
 var app = module.exports = lark({
         directory: "config"
     });
-app.run(3000, function(port){
-    console.log('running on', port);
-});
+if (!module.parent) { // 如果是test中requre启动就不执行下面的run
+    app.run(3000, function(port){
+        console.log('running on', port);
+    });
+}
