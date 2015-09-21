@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/larkjs/lark.git"
+    "url": "git+https://github.com/larkjs/lark.git"
   },
   "keywords": [
     "node",
@@ -42,9 +42,10 @@
     "router.js"
   ],
   "dependencies": {
+    "extend": "~3.0.0",
     "koa": "^0.20.0",
     "koa-static": "~1.4.9",
-    "koa-bodyparser": "~2.0.0",
+    "koa-body-parsers": "~1.1.0",
     "lark-bootstrap": "~0.2.0",
     "lark-config": "~0.4.4",
     "lark-commands": "~0.1.1",
@@ -70,5 +71,39 @@
     "got": "^3.0.0",
     "debug": "^2.1.3",
     "fecs": "~0.4.1"
-  }
+  },
+  "gitHead": "266abab845fb9ece90c933a49f7861e05ae1b159",
+  "_id": "lark@0.11.4",
+  "_shasum": "50613c245dff0202e33ce6dc23089cbecf6c7548",
+  "_from": "lark@0.11.4",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "viringbells",
+    "email": "viringbells@qq.com.cn"
+  },
+  "dist": {
+    "shasum": "50613c245dff0202e33ce6dc23089cbecf6c7548",
+    "tarball": "http://registry.npmjs.org/lark/-/lark-0.11.4.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "zhangyuanwei",
+      "email": "zhangyuanwei1988@gmail.com"
+    },
+    {
+      "name": "mdemo",
+      "email": "mengdesen09@qq.com"
+    },
+    {
+      "name": "zezhou",
+      "email": "xuyizhi@gmail.com"
+    },
+    {
+      "name": "viringbells",
+      "email": "viringbells@qq.com.cn"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/lark/-/lark-0.11.4.tgz",
+  "readme": "ERROR: No README data found!"
 }
