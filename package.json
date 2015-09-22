@@ -1,6 +1,6 @@
 {
   "name": "lark",
-  "version": "0.12.0",
+  "version": "0.11.5",
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
   "scripts": {
     "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony --require should test/",
@@ -104,6 +104,6 @@
     }
   ],
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/lark/-/lark-0.11.4.tgz",
+  "_resolved": "https://registry.npmjs.org/lark/-/lark-0.11.5.tgz",
   "readme": "ERROR: No README data found!"
 }
