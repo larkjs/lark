@@ -12,6 +12,7 @@
 var assert = require("assert");
 var fs = require('fs');
 var path = require('path');
+var exec = require('child_process').exec;
 
 var cwd = process.cwd();
 clear();
@@ -131,16 +132,8 @@ describe('lark-log', function () {
 
 function clear () {
     function clearLogs () {
-        ['app.log'].forEach(function (filename) {
-            try {
-                fs.unlinkSync(path.join(cwd, 'logs', filename));
-            }
-            catch (e) {}
-        });
-        try {
-            fs.rmdirSync(path.join(cwd, 'logs'));
-        }
-        catch (e) {}
+        exec('rm -rf ' + path.join(cwd, 'logs'));
+        exec('rm -rf ' + path.join(cwd, 'example/.pm2'));
     };
 
     clearLogs();
