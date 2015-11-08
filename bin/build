@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+'use strict'
+
+const path  = require('path');
+const fs    = require('fs');
+const chalk = require('chalk');
+const exec  = require('child_process').execSync;
+
+let CWD = process.cwd();
+
+let appPath = CWD.split('/');
+let index = appPath.indexOf('lark');
+
+if (-1 === index) {
+    console.log(chalk.red('Error!') + ' ' + chalk.yellow('You should run build under lark directory!'));
+}
+
+appPath = appPath.slice(0, index + 1).join('/');
+
+let toPath = appPath + '/../nodev5.lark';
+let pkg    = require(appPath + '/package.json');
+pkg.version = pkg['version-node-v5'];
+delete pkg['version-node-v5'];
+
+function removeBabel (obj) {
+    if (Array.isArray(obj)) {
+        obj = obj.filter(item => {
+            if ((/babel/i).test(item)) {
+                return false;
+            }
+            item = removeBabel(item);
+            return true;
+        });
+    }
+    else if (obj instanceof Object) {
+        for (var name in obj) {
+            if ((/babel/i).test(name)) {
+                delete obj[name];
+            }
+            else {
+                obj[name] = removeBabel(obj[name]);
+            }
+        }
+    }
+    return obj;
+}
+
+pkg = removeBabel(pkg);
+
+console.log("Starting to build ...");
+exec(appPath + '/node_modules/.bin/babel --ignore node_modules ' + appPath + ' -d ' + toPath);
+exec("cp -r " + appPath + '/bin ' + toPath + '/');
+exec("rm " + toPath + "/bin/build");
+fs.writeFileSync(toPath + '/package.json', JSON.stringify(pkg, null, 4));
+console.log("Done!");
