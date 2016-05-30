@@ -1,6 +1,6 @@
 {
   "name": "lark",
-  "version": "0.11.7-alpha-3",
+  "version": "0.12.0",
   "description": "6 node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
   "scripts": {
     "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony --require should test/",
