@@ -1,11 +1,11 @@
 {
   "name": "lark",
-  "version": "1.0.0-dev-0.0",
-  "version-node-v5": "0.12.0",
+  "version": "1.0.0-alpha-1",
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
+  "main": "./lib/Lark.js",
   "scripts": {
-    "test": "NODE_ENV=development ./node_modules/.bin/mocha --require should test/",
-    "benchmark": "sh benchmarks/run.sh example/index.js 3000"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require should --recursive test",
+    "_test": "./node_modules/.bin/mocha --require should test/"
   },
   "bin": {
     "lark": "./bin/lark"
@@ -19,76 +19,31 @@
     "web framework",
     "lark",
     "larkjs",
-    "koajs",
     "koa",
-    "industrial",
-    "babel"
+    "koa",
+    "industrial"
   ],
   "engines": {
-    "node": ">= 5.0.0"
+    "node": ">= 6.4"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/larkjs/lark/issues"
   },
   "homepage": "https://github.com/larkjs/lark",
-  "files": [
-    "index.js",
-    "lib",
-    "bin",
-    "http.js",
-    "logging.js",
-    "mvc.js",
-    "promisfy.js",
-    "router.js"
-  ],
   "dependencies": {
-    "extend": "~3.0.0",
-    "koa": "2.0.0-alpha.3",
-    "koa-static": "~1.4.9",
-    "koa-body-parsers": "~1.1.0",
-    "lark-bootstrap": "~0.2.0",
-    "lark-config": "~0.4.4",
-    "lark-commands": "~0.1.1",
-    "lark-log": "~1.2.9",
-    "lark-router": "^0.4.2",
-    "lark-mvc": "^0.4.5",
-    "lark-views": "^0.3.3",
-    "thenify-all": "^1.6.0"
+    "bytes": "^2.4.0",
+    "debug": "^2.2.0",
+    "koa": "^2.0.0-alpha.6",
+    "lark-config": "^1.1.2",
+    "lark-log": "^2.1.1",
+    "lodash": "^4.15.0",
+    "save-instance": "^0.0.6"
   },
   "devDependencies": {
-    "babel-cli": "^6.1.2",
-    "babel-plugin-transform-async-to-generator": "^6.0.14",
-    "babel-plugin-transform-es2015-destructuring": "^6.0.18",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.1.3",
-    "chalk": "^1.1.1",
-    "clone": "^1.0.2",
-    "debug": "^2.1.3",
-    "ejs": "^2.2.4",
-    "fecs": "~0.4.1",
-    "got": "^3.0.0",
     "mocha": "^2.0.1",
     "should": "^4.4.1",
     "supertest": "^0.15.0"
-  },
-  "peerDependencies": {
-    "ejs": "^2.2.4",
-    "clone": "^1.0.2",
-    "got": "^3.0.0",
-    "debug": "^2.1.3"
-  },
-  "gitHead": "266abab845fb9ece90c933a49f7861e05ae1b159",
-  "_id": "lark@0.11.4",
-  "_shasum": "50613c245dff0202e33ce6dc23089cbecf6c7548",
-  "_from": "lark@0.11.4",
-  "_npmVersion": "2.0.0",
-  "_npmUser": {
-    "name": "viringbells",
-    "email": "viringbells@qq.com.cn"
-  },
-  "dist": {
-    "shasum": "50613c245dff0202e33ce6dc23089cbecf6c7548",
-    "tarball": "http://registry.npmjs.org/lark/-/lark-0.11.4.tgz"
   },
   "maintainers": [
     {
@@ -107,8 +62,5 @@
       "name": "viringbells",
       "email": "viringbells@qq.com.cn"
     }
-  ],
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/lark/-/lark-0.11.5.tgz",
-  "readme": "ERROR: No README data found!"
+  ]
 }
