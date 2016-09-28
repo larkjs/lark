@@ -1,0 +1,31 @@
+{
+    "accessMethod": "access",
+    "methods": {
+        "access": {
+            "output": "access",
+            "level": 4
+        },
+        "backend": {
+            "output": "backend",
+            "level": 4
+        }
+    },
+    "outputs": {
+        "access": {
+            "path": "access.log",
+            "format": "<%- method %>:\t<%- date(\"YYYY-MM-DD HH:II:SS\") %>\t<%- content %>",
+            "maxLength": 2000
+        },
+        "backend": {
+            "path": "backend.log",
+            "maxlength": 2000
+        },
+        "system": {
+            "path": "system.log",
+            "maxLength": 10000
+        },
+        "error": {
+            "path": "error.log"
+        }
+    }
+}
