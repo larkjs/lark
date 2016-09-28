@@ -20,7 +20,7 @@
     "lark",
     "larkjs",
     "koa",
-    "koa",
+    "koa2",
     "industrial"
   ],
   "engines": {
@@ -54,20 +54,16 @@
   },
   "maintainers": [
     {
+      "name": "viringbells",
+      "email": "viringbells@qq.com.cn"
+    },
+    {
       "name": "zhangyuanwei",
       "email": "zhangyuanwei1988@gmail.com"
     },
     {
-      "name": "mdemo",
-      "email": "mengdesen09@qq.com"
-    },
-    {
       "name": "zezhou",
       "email": "xuyizhi@gmail.com"
-    },
-    {
-      "name": "viringbells",
-      "email": "viringbells@qq.com.cn"
     }
   ]
 }
