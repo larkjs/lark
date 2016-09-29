@@ -61,6 +61,7 @@ Handle requests of `/favicon.ico`.
 See [koa-favicon](https://www.npmjs.com/package/koa-favicon) for more details
 
 * _path_ [string] [default='static/favicon.ico']
+
 The path to the icon resource.
 
 #### static
@@ -69,9 +70,11 @@ Handle static resources requests.
 See [koa-static](https://www.npmjs.com/package/koa-static) for more details.
 
 * _path_ [string] [default='/static']
+
 The url prefix to access static resources.
 
 * _directory_ [string] [default='static']
+
 The path of directory to access static resources.
 
 #### log
@@ -82,6 +85,7 @@ See [lark-log])(https://github.com/larkjs/lark-log) for more details.
 _NOTE: If you disabled this middleweare, ctx.logger and app.logger will be no logger accessible_
 
 * _accessMethod_ [string] [default=false]
+
 The name of the menthod to print access logs. If false(or null, '', 0, etc), Lark will not print access logs.
 
 #### router
@@ -90,6 +94,7 @@ Dispatch requests to different handlers by their paths.
 See [lark-router](https://github.com/larkjs/lark-router) for more details.
 
 * _directory_ [string] [default=undefined]
+
 If set, lark-router will load that directory to generate routers.
 
 [npm-image]: https://img.shields.io/npm/v/lark.svg?style=flat-square
