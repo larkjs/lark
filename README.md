@@ -52,10 +52,12 @@ Lark provides a lot of useful middlewares. You can enable/disable and configure 
 All middlewares wil be load in the following order:
 
 #### config
+====
 
 Clone and bind config to `ctx`;
 
-### favicon
+#### favicon
+====
 
 Handle requests of `/favicon.ico`.
 See [koa-favicon](https://www.npmjs.com/package/koa-favicon) for more details
@@ -63,7 +65,8 @@ See [koa-favicon](https://www.npmjs.com/package/koa-favicon) for more details
 * path [string] [default='static/favicon.ico']
 The path to the icon resource.
 
-### static
+#### static
+====
 
 Handle static resources requests.
 See [koa-static](https://www.npmjs.com/package/koa-static) for more details.
@@ -74,7 +77,8 @@ The url prefix to access static resources.
 * directory [string] [default='static']
 The path of directory to access static resources.
 
-### log
+#### log
+====
 
 Initialize logger and bind logger to `app` and `ctx`.
 See [lark-log])(https://github.com/larkjs/lark-log) for more details.
@@ -84,7 +88,8 @@ _NOTE: If you disabled this middleweare, ctx.logger and app.logger will be no lo
 * accessMethod [string] [default=false]
 The name of the menthod to print access logs. If false(or null, '', 0, etc), Lark will not print access logs.
 
-### router
+#### router
+====
 
 Dispatch requests to different handlers by their paths.
 See [lark-router](https://github.com/larkjs/lark-router) for more details.
