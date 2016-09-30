@@ -13,7 +13,7 @@ const utils   = require('lark-utils');
 debug('loading ...');
 
 function middleware (config = {}) {
-    const pathname = utils.path.absolute(config.path || '/static/favicon.ico');
+    const pathname = utils.path.absolute(config.path || 'static/favicon.ico');
     assert(path.isAbsolute(pathname), 'Invalid favicon resource path');
     return favicon(pathname, $.cloneDeep(config));
 }

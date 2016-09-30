@@ -21,7 +21,10 @@ function middleware (config = {}, app = null) {
     debug('lark logger initialized');
     app.logger = logger;
 
-    let accessMethod = config.accessMethod || 'notice';
+    let accessMethod = config.accessMethod;
+    if (!accessMethod) {
+        return (ctx, next) => next();
+    }
     assert('string' === typeof accessMethod && logger[accessMethod] instanceof Function, 'Access method [' + accessMethod + '] should be a function!');
     debug('access method confirmed');
 
