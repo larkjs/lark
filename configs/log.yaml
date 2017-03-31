@@ -1,0 +1,37 @@
+inherit: false
+path: logs
+level: 3
+defaultType: file
+methods:
+    log:
+        level: 2
+        output: console
+    access:
+        level: 3
+        output: access_log
+    notice:
+        level: 3
+        output: trace_log
+    warn:
+        level: 4
+        output: error_log
+    error:
+        level: 5
+        output: error_log
+outputs:
+    console:
+        type: stdout
+        format: '<%- method %>:  <%- date("YYYY-MM-DD HH:II:SS") %>  <%- content %>'
+        maxLength: 2000
+    access_log:
+        path: access.log
+        format: '<%- method %>:  <%- date("YYYY-MM-DD HH:II:SS") %>  <%- content %>'
+        maxLength: 2000
+    trace_log:
+        path: app.log
+        format: '<%- method %>:  <%- date("YYYY-MM-DD HH:II:SS") %>  <%- content %>'
+        maxLength: 10000
+    error_log:
+        path: app.log.wf
+        format: '<%- method %>:  <%- date("YYYY-MM-DD HH:II:SS") %>  <%- content %>'
+        maxLength: 2000

@@ -1,11 +1,11 @@
 {
   "name": "lark",
-  "version": "1.0.0-alpha-1",
+  "version": "2.0.0-alpha-1",
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
   "main": "./lib/Lark.js",
   "scripts": {
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require should --recursive test",
-    "_test": "./node_modules/.bin/mocha --require should test/"
+    "test": "./node_modules/.bin/eslint example/** lib/** middlewares/** && ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require should --recursive test",
+    "debug": "node --inspect-brk=9229 example/ultimate/app.js"
   },
   "bin": {
     "lark": "./bin/lark"
@@ -24,7 +24,7 @@
     "industrial"
   ],
   "engines": {
-    "node": ">= 6.4"
+    "node": ">= 7.6"
   },
   "license": "MIT",
   "bugs": {
@@ -32,21 +32,14 @@
   },
   "homepage": "https://github.com/larkjs/lark",
   "dependencies": {
-    "bytes": "^2.4.0",
-    "debug": "^2.2.0",
-    "extend": "^3.0.0",
-    "koa": "^2.0.0-alpha.6",
-    "koa-favicon": "^2.0.0",
-    "koa-mount": "^2.0.0",
-    "koa-static": "^3.0.0",
-    "lark-config": "^1.1.2",
-    "lark-log": "^2.2.0",
-    "lark-router": "^1.1.2",
-    "lark-utils": "0.0.2",
-    "lodash": "^4.15.0",
-    "save-instance": "^0.0.6"
+    "bytes": "^2.5.0",
+    "koa": "^2.0.0-alpha.8",
+    "lark-config": "^2.4.0",
+    "lark-log": "^2.4.0",
+    "lark-router": "^1.2.0"
   },
   "devDependencies": {
+    "eslint": "^3.18.0",
     "istanbul": "^0.4.5",
     "mocha": "^2.0.1",
     "should": "^4.4.1",
