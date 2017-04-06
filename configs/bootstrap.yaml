@@ -1,3 +1,5 @@
 middlewares:
   - logger
+  - custom
+  - mvc
   - router 

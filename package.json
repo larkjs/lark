@@ -36,14 +36,17 @@
     "koa": "^2.0.0-alpha.8",
     "lark-config": "^2.4.0",
     "lark-log": "^2.4.0",
-    "lark-router": "^1.2.0"
+    "lark-mvc": "^3.0.0",
+    "lark-router": "^1.2.0",
+    "lark-router-config": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "^3.18.0",
     "istanbul": "^0.4.5",
     "mocha": "^2.0.1",
     "should": "^4.4.1",
-    "supertest": "^0.15.0"
+    "supertest": "^0.15.0",
+    "vi-misc": "^1.2.0"
   },
   "maintainers": [
     {
