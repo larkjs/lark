@@ -10,11 +10,9 @@ class User extends Lark.Model {
     }
 
     async getInfo(name) {
-        return {
-            name: this.name,
-            age: $.lib.mosaic(28),
-            gender: 'male',
-        };
+        const info = await $.dao.user.getInfoByName(this.name);
+        info.age = $.lib.mosaic(info.age);
+        return info;
     }
 
 }
