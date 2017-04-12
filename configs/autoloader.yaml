@@ -1,0 +1,4 @@
+directory:
+  lib:      library
+  dao:      models/dao
+  helper:   models/helper

@@ -5,9 +5,9 @@ const Lark    = require('../../../..');
 class GetDataController extends Lark.Controller {
 
     async main(ctx) {
-        ctx.body = {
-            data: 'This is your data',
-        };
+        const user = new this.model.data.User(ctx.query.name);
+        const info = await user.getInfo(ctx);
+        ctx.body = info;
     }
 
 }

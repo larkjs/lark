@@ -12,6 +12,10 @@ module.exports = (app) => {
     const logger = new LarkLog(config);
     app.logger = logger;
 
+    if (app.config.has('autoloader') && global.$) {
+        global.$.logger = logger;
+    }
+
     return async (ctx, next) => {
         const now = Date.now();
         ctx.logger = logger;

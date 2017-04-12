@@ -11,13 +11,12 @@ app.config.use('configs');
 app.config.set('server/port', 8888);
 
 app.on('error', (error, ctx) => {
-    console.log(error);
+    ctx.logger.error(error.stack);
+    ctx.logger.log(error.stack);
 });
 
 app.start().then(({ port }) => {
     app.logger.notice(`SERVER[${process.pid}] listening on ${port} ...`);
 });
-
-// console.log(JSON.stringify(app.config.config, null, 4));
 
 module.exports = app;

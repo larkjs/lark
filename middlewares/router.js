@@ -18,12 +18,9 @@ module.exports = (app) => {
         app.routes.use(config.directory);
     }
 
-    config.proxy = (target) => {
-        app.mvc.use(target);
-        return async (ctx) => {
-            return await app.mvc.dispatch(target, ctx);
-        };
-    };
+    if (app.config.has('mvc/proxy')) {
+        config.proxy = app.config.get('mvc/proxy');
+    }
 
     app.routes.inject(app.router, config);
 
