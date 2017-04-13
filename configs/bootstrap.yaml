@@ -1,6 +1,5 @@
 middlewares:
-  - autoloader
-  - logger
-  - custom
-  - mvc
-  - router 
+  - lark/middlewares/autoloader
+  - lark/middlewares/logger
+  - lark/middlewares/mvc
+  - lark/middlewares/router

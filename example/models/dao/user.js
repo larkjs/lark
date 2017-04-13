@@ -1,6 +1,6 @@
 'use strict';
 
-const db = $.lib.db;
+const db = global.$.lib.db;
 
 const user = {
     async getInfoByName(name) {

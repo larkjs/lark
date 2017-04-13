@@ -4,9 +4,11 @@
 'use strict';
 
 const assert      = require('assert');
-const LarkRoutes  = require('lark-router-config');
 
 module.exports = (app) => {
+    if (!app.config.has('routes')) {
+        return;
+    }
     const config = app.config.get('routes');
     assert(config instanceof Object, 'No routes found');
     assert('string' === typeof config.directory, 'No routing handlers directory found');

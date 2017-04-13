@@ -1,0 +1,6 @@
+models:
+  path: models/service
+views:
+  path: views
+  map:
+    tpl: ejs

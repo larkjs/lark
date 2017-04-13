@@ -1,6 +1,6 @@
 inherit: false
 path: logs
-level: 1
+level: 3
 defaultType: file
 methods:
     log:

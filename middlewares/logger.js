@@ -3,12 +3,14 @@
  **/
 'use strict';
 
+const assert    = require('assert');
 const bytes     = require('bytes');
 
 const LarkLog   = require('lark-log');
 
 module.exports = (app) => {
-    const config = app.config.get('log') || {};
+    assert(app.config.has('log'), 'No log config found!');
+    const config = app.config.get('log');
     const logger = new LarkLog(config);
     app.logger = logger;
 
@@ -26,8 +28,8 @@ module.exports = (app) => {
             await next();
         }
         catch (e) {
-            error = e;
             logger.error(e.stack);
+            error = e;
             throw e;
         }
         finally {
@@ -41,6 +43,10 @@ module.exports = (app) => {
                 status: ctx.status,
                 length: bytes(Buffer.byteLength(JSON.stringify(ctx.body || ''), 'utf-8')),
             };
+
+            if (error instanceof Error) {
+                message.error = error.message;
+            }
 
             logger.access(JSON.stringify(message));
         }
