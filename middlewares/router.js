@@ -18,8 +18,8 @@ module.exports = (app) => {
         app.routes.use(config.directory);
     }
 
-    if (app.config.has('mvc/proxy')) {
-        config.proxy = app.config.get('mvc/proxy');
+    if (app.config.has('mvc/proxy/controller')) {
+        config.proxy = app.config.get('mvc/proxy/controller');
     }
 
     app.routes.inject(app.router, config);

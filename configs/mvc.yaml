@@ -1,2 +1,7 @@
-models: models/service
-views: views
+models:
+  path: models/service
+  ext:  [js, node]
+views:
+  path: views
+  map:
+    tpl:  ejs
