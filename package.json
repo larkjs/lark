@@ -1,6 +1,6 @@
 {
   "name": "lark",
-  "version": "2.0.0-alpha-1",
+  "version": "2.0.0-alpha-1.0.1",
   "description": "A node.js framework based on koa. Our goal is to build the best industrial node.js framework for high concurrency and high flow application. ",
   "main": "./lib/Lark.js",
   "scripts": {
