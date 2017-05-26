@@ -4,8 +4,6 @@
 'use strict';
 process.mainModule = module;
 
-global.LARK_TEST = true;
-
 const Lark = require('..');
 const app = new Lark();
 
