@@ -21,17 +21,17 @@ methods:
 outputs:
     console:
         type: stdout
-        format: '<%- method %>:  <%- date("yyyy-mm-dd hh:MM:ss") %>  <%- content %>'
+        format: "<%- method %>:  <%- date('yyyy-mm-dd hh:MM:ss') %>  <%- content %>"
         maxLength: 2000
     access_log:
         path: access.log
-        format: '<%- method %>:  <%- date("yyyy-mm-dd hh:MM:ss") %>  <%- content %>'
+        format: "<%- method %>:  <%- date('yyyy-mm-dd hh:MM:ss') %>  <%- content %>"
         maxLength: 2000
     trace_log:
         path: app.log
-        format: '<%- method %>:  <%- date("yyyy-mm-dd hh:MM:ss") %>  <%- content %>'
+        format: "<%- method %>:  <%- date('yyyy-mm-dd hh:MM:ss') %>  <%- content %>"
         maxLength: 10000
     error_log:
         path: app.log.wf
-        format: '<%- method %>:  <%- date("yyyy-mm-dd hh:MM:ss") %>  <%- content %>'
+        format: "<%- method %>:  <%- date('yyyy-mm-dd hh:MM:ss') %>  <%- content %>"
         maxLength: 2000
