@@ -1,4 +1,5 @@
 middlewares:
+  - lark/middlewares/configs
   - lark/middlewares/autoloader
   - lark/middlewares/logger
   - lark/middlewares/mvc
