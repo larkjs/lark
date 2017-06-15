@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = (app) => {
-    let config = app.config;
+    let configs = app.configs;
     return async (ctx, next) => {
-        ctx.config = config;
+        ctx.configs = configs;
         return await next();
     };
 };
