@@ -14,9 +14,9 @@ describe('lark app service', () => {
     let request = {};
 
     before(async () => {
-        const result = await app;
-        port = result.port;
-        server = result.server;
+        const service = await app();
+        port = service.port;
+        server = service.server;
         request = agent(server);
     });
 

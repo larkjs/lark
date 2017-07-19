@@ -17,3 +17,38 @@ rules:
   semi:
     - error
     - always
+  spellcheck/spell-checker:
+    - 1
+    - 
+      comments: true
+      strings: true
+      identifiers: true
+      lang: en_US
+      skipWords:
+        - args
+        - async
+        - autoload
+        - autoloader
+        - basename
+        - config
+        - configs
+        - ctx
+        - dao
+        - directoryfiles
+        - dirname
+        - extname
+        - ip
+        - ips
+        - js
+        - koa
+        - middleware
+        - middlewares
+        - mvc
+        - pid
+        - tpl
+        - stderr
+        - stdout
+        - stringify
+        - utf
+plugins:
+  - spellcheck

@@ -1,0 +1,6 @@
+directory: controllers
+routes:
+  welcome:    GET   /you-are-welcome
+  home:
+    user:     GET   /welcome-home/:name
+    profile:  GET   /welcome-profile/:name

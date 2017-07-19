@@ -6,7 +6,7 @@
 const assert          = require('assert');
 const LarkAutoLoader  = require('lark-autoloader');
 
-module.exports = (app) => {
+module.exports = async (app) => {
     if (!app.config.has('autoloader')) {
         return;
     }
@@ -21,11 +21,17 @@ module.exports = (app) => {
         if (global[key].hasOwnProperty(name)) {
             continue;
         }
-        try {
-            global[key][name] = new LarkAutoLoader(directories[name]);
-        }
-        catch (e) {
-            global[key][name] = {};
-        }
+        global[key][name] = {};
+        await autoload(global[key][name], directories[name]);
     }
 };
+
+async function autoload(target, directory) {
+    const autoloader = new LarkAutoLoader(target);
+    try {
+        await autoloader.load(directory);
+    }
+    catch (error) {
+        throw new Error(`Can not load ${directory}: ${error.message}`);
+    }
+}

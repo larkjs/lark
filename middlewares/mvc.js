@@ -10,11 +10,9 @@ const LarkMVC   = require('lark-mvc');
 const LarkViews = require('lark-views');
 
 module.exports = (app) => {
-
     registerControllerProxy(app);
     registerModels(app);
     registerViews(app);
-
 };
 
 function registerControllerProxy(app) {
@@ -41,19 +39,19 @@ function registerModels(app) {
     assert(Array.isArray(extList), 'Model files extname list must be an array');
     extList.forEach(ext => assert('string' === typeof ext, 'Model files extname must be a string'));
     directory = new Directory(directory);
-    directory.map(filepath => {
-        let extname = path.extname(filepath);
-        let name = path.basename(filepath, extname);
-        let dirname = path.relative(directory.path, path.dirname(filepath));
+    directory.map(filePath => {
+        let extname = path.extname(filePath);
+        let name = path.basename(filePath, extname);
+        let dirname = path.relative(directory.path, path.dirname(filePath));
         name = path.join(dirname, name);
         extname = extname.slice(1);
-        return { filepath, name, extname };
+        return { filePath, name, extname };
     })
     .filter((file) => {
         return (!file.name.startsWith('.')) && extList.includes(file.extname);
     })
     .each(file => {
-        const module = require(file.filepath);
+        const module = require(file.filePath);
         registerModel(app, module, file.name);
     });
 }

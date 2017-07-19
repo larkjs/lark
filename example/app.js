@@ -2,19 +2,34 @@
  * Example of using Lark constructing a web app
  **/
 'use strict';
-process.mainModule = module;
 
-const Lark = require('..');
-const app = new Lark();
+const debug = require('debug')('lark.example.app');
+const Lark  = require('lark');
 
-app.config.use('configs');
-app.config.set('server/port', 8888);
+/**
+ * The main entry. Since lark use async methods such as app.start, it's better to use lark in an
+ * async function
+ **/
+async function main() {
+    debug('run main');
+    process.mainModule = module;
 
-app.on('error', (error, ctx) => ctx.logger.error(error.stack) && ctx.logger.log(error.stack));
+    const app = new Lark();
 
-module.exports = app.start()
-    .then(({ port, server }) => {
-        app.logger.notice(`SERVER[${process.pid}] listening on ${port} ...`);
-        return { port, server };
-    })
-    .catch(e => app.logger.error(e.stack) && app.logger.log(e.stack));
+    debug('preparing app configs');
+    await app.config.use('configs');
+    app.config.set('server/port', 8888);
+    app.on('error', (error, ctx) => {
+        ctx.logger.error(error.stack) && ctx.logger.log(error.stack);
+    });
+
+    let service = null;
+
+    service = await app.start();
+
+    app.logger.notice(`SERVER[${process.pid}] listening on ${service.port} ...`);
+    return service;
+}
+
+// main();
+module.exports = main;
